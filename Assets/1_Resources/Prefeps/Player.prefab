@@ -97,9 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0ceaad0311b6f4b8c900b4ca811bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SR: {fileID: 0}
   BC: {fileID: 0}
   RB: {fileID: 0}
+  Speed: 1
   Xspeed: 2
   Yspeed: 2
   Max_HP: 100
   Current_HP: 100
+  damage: 0
+  Weapon_Pocket_List: []
+  Bible_Go: {fileID: 5578792535807713805, guid: f3f22aaf44019b1499712c7974ca479c, type: 3}

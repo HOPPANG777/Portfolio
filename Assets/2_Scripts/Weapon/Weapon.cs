@@ -7,14 +7,15 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public SpriteRenderer SR;
     public BoxCollider2D BC;
     public Rigidbody2D RB;
-    public SpriteRenderer SR;
 
     public float damage = 0;
     public int level = 0;
     public float speed = 0;
     public float range = 0;
+    public float time = 0;
 
     virtual public void Start()
     {
@@ -24,7 +25,12 @@ public class Weapon : MonoBehaviour
         RB = this.AddComponent<Rigidbody2D>();
         RB.bodyType = RigidbodyType2D.Kinematic;
         
-        SR = this.AddComponent<SpriteRenderer>();
+        SR = GetComponent<SpriteRenderer>();
+    }
+
+    virtual public void Update()
+    {
+
     }
 
     virtual public void OnTriggerStay2D(Collider2D collision)

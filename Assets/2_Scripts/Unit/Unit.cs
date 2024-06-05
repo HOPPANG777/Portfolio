@@ -26,8 +26,9 @@ public class Unit : MonoBehaviour
 
         RB = this.AddComponent<Rigidbody2D>();
         RB.bodyType = RigidbodyType2D.Kinematic;
-
-        SR = this.AddComponent<SpriteRenderer>();
+        
+        SR = GetComponent<SpriteRenderer>();
+        
     }
 
     virtual public void Update()

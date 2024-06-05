@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -27,9 +28,13 @@ public class Player : Unit
     //찾아보면서 써보기
     public List<Weapon_Package> Weapon_Pocket_List = new List<Weapon_Package>();
 
+    public GameObject Bible_Go = null;
+
     public override void Start()
     {
         base.Start();
+
+        Create_Weapon(Weapon_Type.Bible);
 
         Xspeed = 200;
     }
@@ -70,8 +75,44 @@ public class Player : Unit
     //무기 만들기
     public void Create_Weapon(Weapon_Type p_WT)
     {
-        
+        switch (p_WT)
+        {
+            case Weapon_Type.None:
+                {
+
+                }
+                break;
+            case Weapon_Type.Bible:
+                {
+                    GameObject Temp_Go = Instantiate(Bible_Go, null);
+                    Temp_Go.transform.parent = this.transform;
+                    // Temp_Go.GetComponent<Bible>().SR.sprite = All_Manager.instance.Resource_M.STO_Bible.Sprite_Image;
+                    Temp_Go.GetComponent<Bible>().damage = All_Manager.instance.Resource_M.STO_Bible.damage;
+                    Temp_Go.GetComponent<Bible>().speed = All_Manager.instance.Resource_M.STO_Bible.speed;
+                    Temp_Go.GetComponent<Bible>().range = All_Manager.instance.Resource_M.STO_Bible.range;
+                    Temp_Go.GetComponent<Bible>().time = All_Manager.instance.Resource_M.STO_Bible.time;
+
+                }
+                break;
+            case Weapon_Type.Lightning:
+                {
+                }break;
+            case Weapon_Type.Bullet:
+                {
+                }break;
+            case Weapon_Type.Missile:
+                {
+                }break;
+            case Weapon_Type.Force:
+                {
+                }break;
+            default:
+                {
+                }break;
+        }
     }
+
+
 
     //무기 업그레이드
     public void Upgrade_Weapon(Weapon_Type p_WT)

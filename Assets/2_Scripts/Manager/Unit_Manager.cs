@@ -28,7 +28,7 @@ public class Unit_Manager : MonoBehaviour
             if (Temp_Go.GetComponent<Player>())
             {
                 Temp_Go.GetComponent<Player>().Max_HP = Temp_Go.GetComponent<Player>().Current_HP = All_Manager.instance.Resource_M.STO_Player.HP;
-                Temp_Go.GetComponent<Player>().SR.sprite = All_Manager.instance.Resource_M.STO_Player.Sprite_Image;
+                // Temp_Go.GetComponent<Player>().SR.sprite = All_Manager.instance.Resource_M.STO_Player.Sprite_Image;
 
                 All_Manager.instance.GameMode_M.Current_Player = Temp_Go.GetComponent<Player>();
             }

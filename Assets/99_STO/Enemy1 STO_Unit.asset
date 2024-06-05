@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7857a07e83bf01a49bdbe4ca3b1f1882, type: 3}
   m_Name: Enemy1 STO_Unit
   m_EditorClassIdentifier: 
-  HP: 0
+  HP: 100
   Speed: 0
   Damage: 0
   Sprite_Image: {fileID: 0}
