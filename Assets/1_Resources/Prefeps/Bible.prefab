@@ -52,6 +52,9 @@ MonoBehaviour:
   level: 0
   speed: 0
   range: 0
+  time: 0
+  target: {fileID: 996344030151624737, guid: 1a232190702e3d242bf4ea8b5ce4a345, type: 3}
+  yPosition: 0
 --- !u!212 &6149745730815485800
 SpriteRenderer:
   m_ObjectHideFlags: 0
