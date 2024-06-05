@@ -72,4 +72,4 @@ public class Bible : Weapon
         others[i]->SetPosition({ x,y,player->GetPosition().z });
     }
 }
- */
+*/
