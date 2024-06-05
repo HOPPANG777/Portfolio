@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Player STO_Unit
   m_EditorClassIdentifier: 
   HP: 100
-  Sprite_Image: {fileID: 21300000, guid: 70632ddfe8e71b04b8f90ef7e29a9e98, type: 3}
+  Speed: 0
+  Damage: 0
+  Sprite_Image: {fileID: 21300000, guid: b43859fd77eee45cebacce0bd6d02b9d, type: 3}

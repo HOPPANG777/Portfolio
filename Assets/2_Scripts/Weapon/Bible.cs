@@ -22,7 +22,8 @@ public class Bible : Weapon
         time += Time.deltaTime * speed;
         float x = range * Mathf.Cos(time);
         float y = range * Mathf.Sin(time);
-        this.transform.position = target.position + new Vector3(x, y, 0);
+        //this.transform.position = target.position + new Vector3(x, y, 0);
+        this.transform.localPosition = target.position + new Vector3(x, y, 0);
     }
 
     public override void OnTriggerStay2D(Collider2D collision)

@@ -66,7 +66,7 @@ public class Unit_Manager : MonoBehaviour
             Temp_Go.transform.localScale = Vector3.one;
 
             yield return new WaitUntil(() => Temp_Go.GetComponent<Enemy>().SR);
-            Temp_Go.GetComponent<Enemy>().SR.sprite = All_Manager.instance.Resource_M.STO_Enemy1.Sprite_Image;
+            Temp_Go.GetComponent<Enemy>().SR.sprite = All_Manager.instance.Resource_M.STO_Enemy.Sprite_Image;
 
             All_Manager.instance.GameMode_M.Enemy_List.Add(Temp_Go.GetComponent<Enemy>());
         }
