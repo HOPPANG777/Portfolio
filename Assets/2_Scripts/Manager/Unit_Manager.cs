@@ -13,8 +13,13 @@ public class Unit_Manager : MonoBehaviour
     public GameObject Player_Go;
     public GameObject Enemy_Go;
 
+    public void Create_Unit(Unit_Name p_Unit_Name)
+    {
+        StartCoroutine(C_Create_Unit(p_Unit_Name));
+    }
+
     //유닛 생성하는 함수
-    public GameObject Create_Unit(Unit_Name p_Unit_Name)
+    public IEnumerator C_Create_Unit(Unit_Name p_Unit_Name)
     {
         //플레이어 생성
         if (p_Unit_Name == Unit_Name.Player)
@@ -28,12 +33,14 @@ public class Unit_Manager : MonoBehaviour
             if (Temp_Go.GetComponent<Player>())
             {
                 Temp_Go.GetComponent<Player>().Max_HP = Temp_Go.GetComponent<Player>().Current_HP = All_Manager.instance.Resource_M.STO_Player.HP;
-                // Temp_Go.GetComponent<Player>().SR.sprite = All_Manager.instance.Resource_M.STO_Player.Sprite_Image;
+
+                //SR이 있을때까지 기다려
+                yield return new WaitUntil(() => Temp_Go.GetComponent<Player>().SR);
+
+                Temp_Go.GetComponent<Player>().SR.sprite = All_Manager.instance.Resource_M.STO_Player.Sprite_Image;
 
                 All_Manager.instance.GameMode_M.Current_Player = Temp_Go.GetComponent<Player>();
             }
-
-            return Temp_Go;
         }
 
         // 적 생성
@@ -58,10 +65,11 @@ public class Unit_Manager : MonoBehaviour
             Temp_Go.transform.rotation = Quaternion.identity;
             Temp_Go.transform.localScale = Vector3.one;
 
-            return Temp_Go;
-        }
+            yield return new WaitUntil(() => Temp_Go.GetComponent<Enemy>().SR);
+            Temp_Go.GetComponent<Enemy>().SR.sprite = All_Manager.instance.Resource_M.STO_Enemy1.Sprite_Image;
 
-        return null;
+            All_Manager.instance.GameMode_M.Enemy_List.Add(Temp_Go.GetComponent<Enemy>());
+        }
     }
 
     //public void Start()

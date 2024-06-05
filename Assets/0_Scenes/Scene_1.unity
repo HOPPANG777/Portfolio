@@ -434,7 +434,7 @@ MonoBehaviour:
   Enemy_Prefab_Go: {fileID: 1460374614585689180, guid: 02eed0be75cb64c41a4cfef1abf35b92, type: 3}
   Bible_Prefab_Go: {fileID: 0}
   STO_Player: {fileID: 11400000, guid: 7cb9ac43a9159204dabb084bb949fb2f, type: 2}
-  STO_Enemey: {fileID: 11400000, guid: 6d4a86aa30d291748872b2dc18c8563a, type: 2}
+  STO_Enemey1: {fileID: 0}
   STO_Bible: {fileID: 11400000, guid: c0197f6cc3d8dea4da1e97d10db7dcea, type: 2}
 --- !u!1 &426264457
 GameObject:
@@ -534,6 +534,51 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!1 &1014433397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1014433399}
+  - component: {fileID: 1014433398}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1014433398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014433397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25d492f61b2530b4f9308fc170270800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AA: 1
+--- !u!4 &1014433399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014433397}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.45502645, y: 0.0661277, z: -0.005686363}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1042108528
 GameObject:
   m_ObjectHideFlags: 0

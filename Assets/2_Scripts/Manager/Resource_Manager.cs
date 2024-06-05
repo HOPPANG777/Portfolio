@@ -10,6 +10,6 @@ public class Resource_Manager : MonoBehaviour
     public GameObject Bible_Prefab_Go;
 
     public STO_Unit STO_Player;
-    public STO_Unit STO_Enemey;
+    public STO_Unit STO_Enemy1;
     public STO_Weapon STO_Bible;
 }

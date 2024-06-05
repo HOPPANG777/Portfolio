@@ -72,8 +72,13 @@ public class Player : Unit
         Destroy(this.gameObject);
     }
 
-    //무기 만들기
     public void Create_Weapon(Weapon_Type p_WT)
+    {
+        StartCoroutine(C_Create_Weapon(p_WT));
+    }
+
+    //무기 만들기
+    public IEnumerator C_Create_Weapon(Weapon_Type p_WT)
     {
         switch (p_WT)
         {
@@ -86,12 +91,15 @@ public class Player : Unit
                 {
                     GameObject Temp_Go = Instantiate(Bible_Go, null);
                     Temp_Go.transform.parent = this.transform;
-                    // Temp_Go.GetComponent<Bible>().SR.sprite = All_Manager.instance.Resource_M.STO_Bible.Sprite_Image;
-                    Temp_Go.GetComponent<Bible>().damage = All_Manager.instance.Resource_M.STO_Bible.damage;
-                    Temp_Go.GetComponent<Bible>().speed = All_Manager.instance.Resource_M.STO_Bible.speed;
-                    Temp_Go.GetComponent<Bible>().range = All_Manager.instance.Resource_M.STO_Bible.range;
-                    Temp_Go.GetComponent<Bible>().time = All_Manager.instance.Resource_M.STO_Bible.time;
-
+                    if (Temp_Go.GetComponent<Bible>())
+                    {
+                        yield return new WaitUntil(() => Temp_Go.GetComponent<Bible>().SR);
+                        Temp_Go.GetComponent<Bible>().SR.sprite = All_Manager.instance.Resource_M.STO_Bible.Sprite_Image;
+                        Temp_Go.GetComponent<Bible>().damage = All_Manager.instance.Resource_M.STO_Bible.damage;
+                        Temp_Go.GetComponent<Bible>().speed = All_Manager.instance.Resource_M.STO_Bible.speed;
+                        Temp_Go.GetComponent<Bible>().range = All_Manager.instance.Resource_M.STO_Bible.range;
+                        Temp_Go.GetComponent<Bible>().time = All_Manager.instance.Resource_M.STO_Bible.time;
+                    }
                 }
                 break;
             case Weapon_Type.Lightning:

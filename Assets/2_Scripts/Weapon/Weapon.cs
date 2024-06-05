@@ -25,7 +25,7 @@ public class Weapon : MonoBehaviour
         RB = this.AddComponent<Rigidbody2D>();
         RB.bodyType = RigidbodyType2D.Kinematic;
         
-        SR = GetComponent<SpriteRenderer>();
+        SR = this.AddComponent<SpriteRenderer>();
     }
 
     virtual public void Update()

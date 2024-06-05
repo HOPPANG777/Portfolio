@@ -40,9 +40,9 @@ public class GameMode_Manager : MonoBehaviour
 
             if (Spawn_Timer > Spawn_Time)
             {
-                GameObject Go = All_Manager.instance.Unit_M.Create_Unit(Unit_Name.Enemy);
+                 All_Manager.instance.Unit_M.Create_Unit(Unit_Name.Enemy);
 
-                Enemy_List.Add(Go.GetComponent<Enemy>());
+                //Enemy_List.Add(Go.GetComponent<Enemy>());
 
                 Spawn_Timer = 0;
             }
