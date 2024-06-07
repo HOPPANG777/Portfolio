@@ -66,6 +66,10 @@ public class GameMode_Manager : MonoBehaviour
     public void Game_Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // All_Manager.instance.
+        // All_Manager.instance.GameMode_M.Enemy_List.Clear();
+        // All_Manager.instance.GameMode_M.GM_State = GameMode_State.Ingame;
+        
     }
 
     public void Game_Exit()

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -9,7 +8,7 @@ public enum Weapon_Type
     None,       // = "없음"
     Bible,      // 성경
     Lightning,  // 플레이어 주변으로 떨어지는 번개
-    Bullet,     // 총알 뿌리개
+    Gun,     // 총알 뿌리개
     Missile,    // 유도탄
     Force       // 일정 쿨타임후 주변 밀어냄
 }
@@ -31,14 +30,14 @@ public class Player : Unit
     public List<Weapon_Package> Weapon_Pocket_List = new List<Weapon_Package>();
 
     public GameObject Bible_Go = null;
-    public GameObject Bullet_Go = null;
+    public GameObject Gun_Go = null;
     
     public override void Start()
     {
         base.Start();
 
         Create_Weapon(Weapon_Type.Bible);
-        Create_Weapon(Weapon_Type.Bullet);
+        Create_Weapon(Weapon_Type.Gun);
 
         // Xspeed = 200;
     }
@@ -120,17 +119,17 @@ public class Player : Unit
             case Weapon_Type.Lightning:
                 {
                 }break;
-            case Weapon_Type.Bullet:
+            case Weapon_Type.Gun:
                 {
-                    GameObject Temp_Go = Instantiate(Bullet_Go, null);
+                    GameObject Temp_Go = Instantiate(Gun_Go, null);
                     Temp_Go.transform.parent = this.transform;
-                    if (Temp_Go.GetComponent<Bullet>())
+                    if (Temp_Go.GetComponent<Gun>())
                     {
-                        Temp_Go.GetComponent<Bullet>().damage = All_Manager.instance.Resource_M.STO_Bullet.damage;
-                        Temp_Go.GetComponent<Bullet>().speed = All_Manager.instance.Resource_M.STO_Bullet.speed;
-                        Temp_Go.GetComponent<Bullet>().range = All_Manager.instance.Resource_M.STO_Bullet.range;
-                        Temp_Go.GetComponent<Bullet>().time = All_Manager.instance.Resource_M.STO_Bullet.time;
-                        Temp_Go.GetComponent<Bullet>().level = All_Manager.instance.Resource_M.STO_Bullet.level;
+                        Temp_Go.GetComponent<Gun>().damage = All_Manager.instance.Resource_M.STO_Gun.damage;
+                        Temp_Go.GetComponent<Gun>().speed = All_Manager.instance.Resource_M.STO_Gun.speed;
+                        Temp_Go.GetComponent<Gun>().range = All_Manager.instance.Resource_M.STO_Gun.range;
+                        Temp_Go.GetComponent<Gun>().time = All_Manager.instance.Resource_M.STO_Gun.time;
+                        Temp_Go.GetComponent<Gun>().level = All_Manager.instance.Resource_M.STO_Gun.level;
                     }
                 }
                 break;

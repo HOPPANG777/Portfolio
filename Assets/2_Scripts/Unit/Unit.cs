@@ -18,7 +18,7 @@ public class Unit : MonoBehaviour
     public float Current_HP = 100;
 
     public int damage = 0;
-
+    
     virtual public void Start()
     {
         BC = this.AddComponent<BoxCollider2D>();
@@ -28,7 +28,6 @@ public class Unit : MonoBehaviour
         RB.bodyType = RigidbodyType2D.Kinematic;
         
         SR = this.AddComponent<SpriteRenderer>();
-        
     }
 
     virtual public void Update()
