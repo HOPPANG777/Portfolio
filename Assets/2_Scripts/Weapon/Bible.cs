@@ -10,8 +10,6 @@ public class Bible : Weapon
 {
     public Transform target;
 
-    public float yPosition;
-
     public override void Start()
     {
         base.Start();
@@ -20,10 +18,33 @@ public class Bible : Weapon
     public override void Update()
     {
         time += Time.deltaTime * speed;
-        float x = range * Mathf.Cos(time);
-        float y = range * Mathf.Sin(time);
-        //this.transform.position = target.position + new Vector3(x, y, 0);
-        this.transform.localPosition = target.position + new Vector3(x, y, 0);
+        if (time < 360)
+        {
+            float x = range * Mathf.Cos(time);
+            float y = range * Mathf.Sin(time);
+            this.transform.localPosition = target.position + new Vector3(x, y, 0);
+        }
+        else
+        {
+            time = 0;
+        }
+
+        //time += Time.deltaTime * speed;
+        //if (time < 360)
+        //{
+        //    for (int i = 0; i < level; i++)
+        //    {
+        //        float rad = Mathf.Deg2Rad * (time + (i * (360 / level)));
+        //        float x = range * Mathf.Sin(rad);
+        //        float y = range * Mathf.Cos(rad);
+        //        this.transform.localPosition = target.position + new Vector3(x, y);
+        //        this.transform.rotation = Quaternion.Euler(0, 0, (time + (i * (360 / level))) * -1); //가운데를 바라보게 각도 조절
+        //    }
+        //}
+        //else
+        //{
+        //    time = 0;
+        //}
     }
 
     public override void OnTriggerStay2D(Collider2D collision)

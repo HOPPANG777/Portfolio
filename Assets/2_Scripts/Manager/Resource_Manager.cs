@@ -12,4 +12,9 @@ public class Resource_Manager : MonoBehaviour
     public STO_Unit STO_Player;
     public STO_Unit STO_Enemy;
     public STO_Weapon STO_Bible;
+    public STO_Weapon STO_Bullet;
+
+
+
+    public STO_Weapon STO_Projectile;
 }

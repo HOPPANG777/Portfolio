@@ -25,34 +25,48 @@ public class Weapon_Package
 
 public class Player : Unit
 {
+    public Vector2 InputVec;
+
     //찾아보면서 써보기
     public List<Weapon_Package> Weapon_Pocket_List = new List<Weapon_Package>();
 
     public GameObject Bible_Go = null;
-
+    public GameObject Bullet_Go = null;
+    
     public override void Start()
     {
         base.Start();
 
         Create_Weapon(Weapon_Type.Bible);
+        Create_Weapon(Weapon_Type.Bullet);
 
-        Xspeed = 200;
+        // Xspeed = 200;
     }
 
     public override void Update()
     {
-        float xInput = Input.GetAxis("Horizontal");
-        float yInput = Input.GetAxis("Vertical");
+        InputVec.x = Input.GetAxis("Horizontal");
+        InputVec.y = Input.GetAxis("Vertical");
 
-        float xSpeed = xInput * Xspeed * Time.deltaTime;
-        float ySpeed = yInput * Yspeed * Time.deltaTime;
+        //float xInput = Input.GetAxis("Horizontal");
+        //float yInput = Input.GetAxis("Vertical");
+
+        //float xSpeed = xInput * Xspeed * Time.deltaTime;
+        //float ySpeed = yInput * Yspeed * Time.deltaTime;
 
         //앞 뒤으로가기
-        this.transform.position = this.transform.position + (this.transform.up * ySpeed);
-
+        // this.transform.position = this.transform.position + (this.transform.up * ySpeed);
 
         //돌기
-        this.transform.Rotate(new Vector3(0, 0, -xSpeed));
+        // this.transform.Rotate(new Vector3(0, 0, -xSpeed));
+
+        Vector2 nextVec = InputVec.normalized * (Speed * Time.deltaTime);
+        RB.MovePosition(RB.position + nextVec);
+
+        if (InputVec.x != 0)
+        {
+            SR.flipX = InputVec.x > 0;
+        }
     }
 
     public override void Hitted(float p_Damage_Value)
@@ -99,6 +113,7 @@ public class Player : Unit
                         Temp_Go.GetComponent<Bible>().speed = All_Manager.instance.Resource_M.STO_Bible.speed;
                         Temp_Go.GetComponent<Bible>().range = All_Manager.instance.Resource_M.STO_Bible.range;
                         Temp_Go.GetComponent<Bible>().time = All_Manager.instance.Resource_M.STO_Bible.time;
+                        Temp_Go.GetComponent<Bible>().time = All_Manager.instance.Resource_M.STO_Bible.level;
                     }
                 }
                 break;
@@ -107,7 +122,18 @@ public class Player : Unit
                 }break;
             case Weapon_Type.Bullet:
                 {
-                }break;
+                    GameObject Temp_Go = Instantiate(Bullet_Go, null);
+                    Temp_Go.transform.parent = this.transform;
+                    if (Temp_Go.GetComponent<Bullet>())
+                    {
+                        Temp_Go.GetComponent<Bullet>().damage = All_Manager.instance.Resource_M.STO_Bullet.damage;
+                        Temp_Go.GetComponent<Bullet>().speed = All_Manager.instance.Resource_M.STO_Bullet.speed;
+                        Temp_Go.GetComponent<Bullet>().range = All_Manager.instance.Resource_M.STO_Bullet.range;
+                        Temp_Go.GetComponent<Bullet>().time = All_Manager.instance.Resource_M.STO_Bullet.time;
+                        Temp_Go.GetComponent<Bullet>().level = All_Manager.instance.Resource_M.STO_Bullet.level;
+                    }
+                }
+                break;
             case Weapon_Type.Missile:
                 {
                 }break;

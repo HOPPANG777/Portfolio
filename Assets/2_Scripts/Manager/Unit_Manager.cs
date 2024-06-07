@@ -38,6 +38,7 @@ public class Unit_Manager : MonoBehaviour
                 yield return new WaitUntil(() => Temp_Go.GetComponent<Player>().SR);
 
                 Temp_Go.GetComponent<Player>().SR.sprite = All_Manager.instance.Resource_M.STO_Player.Sprite_Image;
+                Temp_Go.GetComponent<Player>().Speed = All_Manager.instance.Resource_M.STO_Player.Speed;
 
                 All_Manager.instance.GameMode_M.Current_Player = Temp_Go.GetComponent<Player>();
             }

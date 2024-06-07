@@ -436,6 +436,8 @@ MonoBehaviour:
   STO_Player: {fileID: 11400000, guid: 7cb9ac43a9159204dabb084bb949fb2f, type: 2}
   STO_Enemy: {fileID: 11400000, guid: 6d4a86aa30d291748872b2dc18c8563a, type: 2}
   STO_Bible: {fileID: 11400000, guid: c0197f6cc3d8dea4da1e97d10db7dcea, type: 2}
+  STO_Bullet: {fileID: 11400000, guid: c62f38a626d3c904fb2733fa8f1f7bbe, type: 2}
+  STO_Projectile: {fileID: 11400000, guid: a5c6dec42120ed94cad2aff82fe4bfa9, type: 2}
 --- !u!1 &426264457
 GameObject:
   m_ObjectHideFlags: 0

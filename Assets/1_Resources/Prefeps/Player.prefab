@@ -55,3 +55,4 @@ MonoBehaviour:
   damage: 0
   Weapon_Pocket_List: []
   Bible_Go: {fileID: 5578792535807713805, guid: f3f22aaf44019b1499712c7974ca479c, type: 3}
+  Bullet_Go: {fileID: 6316549662862081849, guid: b890598d5d3881644833058ca6b53a45, type: 3}
