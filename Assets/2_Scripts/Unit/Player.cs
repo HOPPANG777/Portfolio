@@ -7,7 +7,7 @@ public enum Weapon_Type
 {
     None,       // = "없음"
     Bible,      // 성경
-    Lightning,  // 플레이어 주변으로 떨어지는 번개
+    SpellBook,  // 플레이어 주변으로 떨어지는 번개
     Gun,     // 총알 뿌리개
     Missile,    // 유도탄
     Force       // 일정 쿨타임후 주변 밀어냄
@@ -31,13 +31,17 @@ public class Player : Unit
 
     public GameObject Bible_Go = null;
     public GameObject Gun_Go = null;
-    
+    public GameObject SpellBook_Go = null;
+    public GameObject Missile_Go = null;
+
     public override void Start()
     {
         base.Start();
 
         Create_Weapon(Weapon_Type.Bible);
         Create_Weapon(Weapon_Type.Gun);
+        Create_Weapon(Weapon_Type.SpellBook);
+        Create_Weapon(Weapon_Type.Missile);
 
         // Xspeed = 200;
     }
@@ -112,13 +116,24 @@ public class Player : Unit
                         Temp_Go.GetComponent<Bible>().speed = All_Manager.instance.Resource_M.STO_Bible.speed;
                         Temp_Go.GetComponent<Bible>().range = All_Manager.instance.Resource_M.STO_Bible.range;
                         Temp_Go.GetComponent<Bible>().time = All_Manager.instance.Resource_M.STO_Bible.time;
-                        Temp_Go.GetComponent<Bible>().time = All_Manager.instance.Resource_M.STO_Bible.level;
+                        Temp_Go.GetComponent<Bible>().level = All_Manager.instance.Resource_M.STO_Bible.level;
                     }
                 }
                 break;
-            case Weapon_Type.Lightning:
+            case Weapon_Type.SpellBook:
                 {
-                }break;
+                    GameObject Temp_Go = Instantiate(SpellBook_Go, null);
+                    Temp_Go.transform.parent = this.transform;
+                    if (Temp_Go.GetComponent<SpellBook>())
+                    {
+                        Temp_Go.GetComponent<SpellBook>().damage = All_Manager.instance.Resource_M.STO_SpellBook.damage;
+                        Temp_Go.GetComponent<SpellBook>().speed = All_Manager.instance.Resource_M.STO_SpellBook.speed;
+                        Temp_Go.GetComponent<SpellBook>().range = All_Manager.instance.Resource_M.STO_SpellBook.range;
+                        Temp_Go.GetComponent<SpellBook>().time = All_Manager.instance.Resource_M.STO_SpellBook.time;
+                        Temp_Go.GetComponent<SpellBook>().level = All_Manager.instance.Resource_M.STO_SpellBook.level;
+                    }
+                }
+                break;
             case Weapon_Type.Gun:
                 {
                     GameObject Temp_Go = Instantiate(Gun_Go, null);
@@ -135,13 +150,30 @@ public class Player : Unit
                 break;
             case Weapon_Type.Missile:
                 {
-                }break;
+                    GameObject Temp_Go = Instantiate(Missile_Go, null);
+                    // Temp_Go.transform.parent = this.transform; 
+                    if (Temp_Go.GetComponent<Missile>())
+                    {
+                        yield return new WaitUntil(() => Temp_Go.GetComponent<Missile>().SR);
+                        Temp_Go.GetComponent<Missile>().SR.sprite = All_Manager.instance.Resource_M.STO_Missile.Sprite_Image;
+                        Temp_Go.GetComponent<Missile>().damage = All_Manager.instance.Resource_M.STO_Missile.damage;
+                        Temp_Go.GetComponent<Missile>().speed = All_Manager.instance.Resource_M.STO_Missile.speed;
+                        Temp_Go.GetComponent<Missile>().range = All_Manager.instance.Resource_M.STO_Missile.range;
+                        Temp_Go.GetComponent<Missile>().time = All_Manager.instance.Resource_M.STO_Missile.time;
+                        Temp_Go.GetComponent<Missile>().level = All_Manager.instance.Resource_M.STO_Missile.level;
+
+                    }
+
+                }
+                break;
             case Weapon_Type.Force:
                 {
-                }break;
+                }
+                break;
             default:
                 {
-                }break;
+                }
+                break;
         }
     }
 

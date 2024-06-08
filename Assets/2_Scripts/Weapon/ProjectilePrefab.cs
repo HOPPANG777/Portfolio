@@ -9,6 +9,7 @@ public class ProjectilePrefab : Weapon
     public override void Start()
     {
         base.Start();
+        BC.size = new Vector2(0.28f, 0.28f);
         mainCamera = Camera.main;
     }
 

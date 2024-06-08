@@ -6,12 +6,11 @@ using UnityEngine;
 public class Gun : Weapon
 {
     //[SerializeField]
-    public GameObject projectilePrefab;
+    public GameObject projectilePrefab = null;
 
     public override void Start()
     {
         CircleBullet();
-
     }
 
     public override void Update()
@@ -26,7 +25,7 @@ public class Gun : Weapon
 
     public IEnumerator C_CircleBullet()
     {
-        //float IntervalAngle = 360 / level;
+        float IntervalAngle = 360 / level;
         float AttackRate = 2.0f;
 
         while (true)
@@ -61,6 +60,7 @@ public class Gun : Weapon
                 {
                     yield return new WaitUntil(() => clone.GetComponent<ProjectilePrefab>().SR);
                     clone.GetComponent<ProjectilePrefab>().SR.sprite = All_Manager.instance.Resource_M.STO_Projectile.Sprite_Image;
+                    clone.GetComponent<ProjectilePrefab>().damage = All_Manager.instance.Resource_M.STO_Projectile.damage;
                     clone.GetComponent<ProjectilePrefab>().speed = All_Manager.instance.Resource_M.STO_Projectile.speed;
                 }
                 Vector2 dirVec = new Vector2(Mathf.Cos((Mathf.PI) * 2 * i / (level - 1)), Mathf.Sin((Mathf.PI) * i * 2 / (level - 1)));

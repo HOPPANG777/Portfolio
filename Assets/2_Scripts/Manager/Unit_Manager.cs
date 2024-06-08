@@ -66,10 +66,14 @@ public class Unit_Manager : MonoBehaviour
             Temp_Go.transform.rotation = Quaternion.identity;
             Temp_Go.transform.localScale = Vector3.one;
 
+            Temp_Go.GetComponent<Enemy>().Max_HP = Temp_Go.GetComponent<Enemy>().Current_HP = All_Manager.instance.Resource_M.STO_Enemy.HP;
+
             yield return new WaitUntil(() => Temp_Go.GetComponent<Enemy>().SR);
             Temp_Go.GetComponent<Enemy>().SR.sprite = All_Manager.instance.Resource_M.STO_Enemy.Sprite_Image;
 
+
             All_Manager.instance.GameMode_M.Enemy_List.Add(Temp_Go.GetComponent<Enemy>());
+
         }
     }
 

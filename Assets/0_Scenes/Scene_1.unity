@@ -439,10 +439,11 @@ MonoBehaviour:
   STO_Enemy4: {fileID: 11400000, guid: e9c8d7b554cf8a54da87cdd6f953fac1, type: 2}
   STO_Enemy5: {fileID: 11400000, guid: d75f7df182e6bc94c82c57ee87228011, type: 2}
   STO_Bible: {fileID: 11400000, guid: c0197f6cc3d8dea4da1e97d10db7dcea, type: 2}
+  STO_SpellBook: {fileID: 11400000, guid: 3e9cc81f264255049bf60355ed4e9b88, type: 2}
   STO_Gun: {fileID: 11400000, guid: c62f38a626d3c904fb2733fa8f1f7bbe, type: 2}
-  STO_Lightning: {fileID: 11400000, guid: 28050ef470e8a2d4a9474fc54543aef1, type: 2}
   STO_Force: {fileID: 11400000, guid: 42b344b6ef78cd747b87967304377b58, type: 2}
   STO_Missile: {fileID: 11400000, guid: 9f77947fe3e16b44a93d1c5d9ed5d239, type: 2}
+  STO_Lightning: {fileID: 11400000, guid: 28050ef470e8a2d4a9474fc54543aef1, type: 2}
   STO_Projectile: {fileID: 11400000, guid: a5c6dec42120ed94cad2aff82fe4bfa9, type: 2}
 --- !u!1 &426264457
 GameObject:

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -13,6 +14,7 @@ public class Bible : Weapon
     public override void Start()
     {
         base.Start();
+        BC.size = new Vector2(0.27f, 0.31f);
     }
 
     public override void Update()

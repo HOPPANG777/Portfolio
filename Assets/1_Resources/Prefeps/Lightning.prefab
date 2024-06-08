@@ -52,3 +52,4 @@ MonoBehaviour:
   speed: 0
   range: 0
   time: 0
+  Lightning_Go: {fileID: 2989164495582988497}

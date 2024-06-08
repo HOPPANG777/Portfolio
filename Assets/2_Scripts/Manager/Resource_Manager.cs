@@ -15,10 +15,11 @@ public class Resource_Manager : MonoBehaviour
     public STO_Unit STO_Enemy4;
     public STO_Unit STO_Enemy5;
     public STO_Weapon STO_Bible;
+    public STO_Weapon STO_SpellBook;
     public STO_Weapon STO_Gun;
-    public STO_Weapon STO_Lightning;
     public STO_Weapon STO_Force;
     public STO_Weapon STO_Missile;
 
+    public STO_Weapon STO_Lightning;
     public STO_Weapon STO_Projectile;
 }

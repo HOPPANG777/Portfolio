@@ -52,3 +52,5 @@ MonoBehaviour:
   speed: 0
   range: 0
   time: 0
+  target: {fileID: 1460374614585689181, guid: 02eed0be75cb64c41a4cfef1abf35b92, type: 3}
+  RotateSpeed: 200

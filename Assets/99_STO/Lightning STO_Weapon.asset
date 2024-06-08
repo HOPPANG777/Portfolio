@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98454607a08893a458162529e1c6f440, type: 3}
   m_Name: Lightning STO_Weapon
   m_EditorClassIdentifier: 
-  damage: 0
-  level: 0
+  damage: 100
+  level: 1
   speed: 0
   range: 0
   time: 0
-  Sprite_Image: {fileID: 0}
+  Sprite_Image: {fileID: 21300000, guid: 5af1f248e13784ae6bef204f6e013e5d, type: 3}

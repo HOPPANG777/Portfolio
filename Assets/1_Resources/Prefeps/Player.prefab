@@ -57,3 +57,5 @@ MonoBehaviour:
   Weapon_Pocket_List: []
   Bible_Go: {fileID: 5578792535807713805, guid: f3f22aaf44019b1499712c7974ca479c, type: 3}
   Gun_Go: {fileID: 6316549662862081849, guid: b890598d5d3881644833058ca6b53a45, type: 3}
+  SpellBook_Go: {fileID: 4526960275445117917, guid: 603006a0c4fe4bb448a47ae47578f79f, type: 3}
+  Missile_Go: {fileID: 5812313576467049406, guid: 45f1716f2366c174298446140d3b0f65, type: 3}
