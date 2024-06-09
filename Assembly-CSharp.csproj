@@ -59,8 +59,9 @@
     <Compile Include="Assets\2_Scripts\Unit\Player.cs" />
     <Compile Include="Assets\2_Scripts\Manager\Unit_Manager.cs" />
     <Compile Include="Assets\2_Scripts\STO\STO_Unit.cs" />
+    <Compile Include="Assets\2_Scripts\Weapon\SpellBook.cs" />
     <Compile Include="Assets\2_Scripts\Weapon\Force.cs" />
-    <Compile Include="Assets\2_Scripts\Weapon\ProjectilePrefab.cs" />
+    <Compile Include="Assets\2_Scripts\Weapon\Projectile\ProjectilePrefab.cs" />
     <Compile Include="Assets\2_Scripts\STO\STO_Weapon.cs" />
     <Compile Include="Assets\2_Scripts\Weapon\Missile.cs" />
     <Compile Include="Assets\2_Scripts\Weapon\Gun.cs" />
@@ -70,12 +71,11 @@
     <Compile Include="Assets\2_Scripts\Manager\GameMode_Manager.cs" />
     <Compile Include="Assets\2_Scripts\Manager\Pool_Manager.cs" />
     <Compile Include="Assets\2_Scripts\Manager\UI_Manager.cs" />
-    <Compile Include="Assets\2_Scripts\Weapon\Lightning.cs" />
+    <Compile Include="Assets\2_Scripts\Weapon\Projectile\Lightning.cs" />
     <Compile Include="Assets\2_Scripts\Test_Script.cs" />
     <Compile Include="Assets\2_Scripts\Unit\Unit.cs" />
     <Compile Include="Assets\2_Scripts\Manager\Resource_Manager.cs" />
     <Compile Include="Assets\2_Scripts\Manager\All_Manager.cs" />
-    <Compile Include="Assets\2_Scripts\Weapon\SpellBook.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\1_Resources\Sprites\2D Pixel RPG Icon Pack\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

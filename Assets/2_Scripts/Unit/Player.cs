@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +34,7 @@ public class Player : Unit
     public GameObject Gun_Go = null;
     public GameObject SpellBook_Go = null;
     public GameObject Missile_Go = null;
+    public GameObject Force_Go = null;
 
     public override void Start()
     {
@@ -42,6 +44,7 @@ public class Player : Unit
         Create_Weapon(Weapon_Type.Gun);
         Create_Weapon(Weapon_Type.SpellBook);
         Create_Weapon(Weapon_Type.Missile);
+        Create_Weapon(Weapon_Type.Force);
 
         // Xspeed = 200;
     }
@@ -97,6 +100,9 @@ public class Player : Unit
     //무기 만들기
     public IEnumerator C_Create_Weapon(Weapon_Type p_WT)
     {
+        float Skill_Cool = 5.0f;
+        float Skill_Full = 0.0f;
+        
         switch (p_WT)
         {
             case Weapon_Type.None:
@@ -168,6 +174,27 @@ public class Player : Unit
                 break;
             case Weapon_Type.Force:
                 {
+                    if (Skill_Full < Skill_Cool)
+                    {
+
+                        Skill_Full += Time.deltaTime;
+                        All_Manager.instance.UI_M.Update_Player_Skill_Image(Skill_Full / Skill_Cool);
+
+                        GameObject Temp_Go = Instantiate(Force_Go, null);
+                        Temp_Go.transform.parent = this.transform;
+                        if (Temp_Go.GetComponent<Force>())
+                        {
+                            Temp_Go.GetComponent<Force>().damage = All_Manager.instance.Resource_M.STO_Force.damage;
+                            Temp_Go.GetComponent<Force>().speed = All_Manager.instance.Resource_M.STO_Force.speed;
+                            Temp_Go.GetComponent<Force>().range = All_Manager.instance.Resource_M.STO_Force.range;
+                            Temp_Go.GetComponent<Force>().time = All_Manager.instance.Resource_M.STO_Force.time;
+                            Temp_Go.GetComponent<Force>().level = All_Manager.instance.Resource_M.STO_Force.level;
+                        }
+                    }
+                    else
+                    {
+                        Skill_Full = 0.0f;
+                    }
                 }
                 break;
             default:

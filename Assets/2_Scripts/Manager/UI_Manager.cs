@@ -8,6 +8,7 @@ public class UI_Manager : MonoBehaviour
     public Text Kill_Count_Text;
     public Image Player_HPbar_Image;
     public Text Game_Over_Text;
+    public Image Player_Skill_Image;
 
     public void Update_Kill_Count_Text(int p_Count)
     {
@@ -17,6 +18,11 @@ public class UI_Manager : MonoBehaviour
     public void Update_Player_HPBar_Image(float p_FillAmount_Value)
     {
         Player_HPbar_Image.fillAmount = p_FillAmount_Value;
+    }
+
+    public void Update_Player_Skill_Image(float p_FillAmount_Value)
+    {
+        Player_Skill_Image.fillAmount = p_FillAmount_Value;
     }
 
     public void Click_Test()
