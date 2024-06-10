@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Enemy : Unit
 {
+    public float AttackTime = 0.0f;
+    public float WatingAttack = 0.0f;
+
     public override void Start()
     {
         base.Start();
+        AttackTime = 0.0f;
+        WatingAttack = 7.0f;
     }
 
     public override void Update()
@@ -24,6 +29,8 @@ public class Enemy : Unit
             //니가 바라보는 정면으로 앞으로 가기
             this.transform.position = this.transform.position + (this.transform.up * (Speed * Time.deltaTime));
         }
+
+        AttackTime += Time.deltaTime;
     }
 
     public override void Hitted(float p_Damage_Value)
@@ -37,7 +44,7 @@ public class Enemy : Unit
 
         All_Manager.instance.GameMode_M.Enemy_Down();
 
-        Destroy(this.gameObject);
+        // Destroy(this.gameObject);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -45,13 +52,23 @@ public class Enemy : Unit
         //충돌체가 이 컴포넌트를 가지고 있는가?
         if (collision.transform.GetComponent<Player>())
         {
-            collision.transform.GetComponent<Player>().Hitted(0.01f);
+            if (AttackTime > WatingAttack)
+            {
+                collision.transform.GetComponent<Player>().Hitted(Damage);
 
-            var Temp = collision.transform.GetComponent<Player>();
+                var Temp = collision.transform.GetComponent<Player>();
 
-            Temp.Hitted(0.1f);
+                Temp.Hitted(Damage);
 
-            Debug.Log("Player Hitted");
+                Debug.Log("Player Hitted");
+
+                AttackTime = 0.0f;
+            }
         }
+    }
+
+    public override void Unit_Clear()
+    {
+        Destroy(this.gameObject);
     }
 }

@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -10,7 +11,7 @@ public enum Weapon_Type
     Bible,      // 성경
     SpellBook,  // 플레이어 주변으로 떨어지는 번개
     Gun,     // 총알 뿌리개
-    Missile,    // 유도탄
+    Launchaer,    // 유도탄
     Force       // 일정 쿨타임후 주변 밀어냄
 }
 
@@ -33,8 +34,11 @@ public class Player : Unit
     public GameObject Bible_Go = null;
     public GameObject Gun_Go = null;
     public GameObject SpellBook_Go = null;
-    public GameObject Missile_Go = null;
+    public GameObject Launchaer_Go = null;
     public GameObject Force_Go = null;
+
+    // public float Invincible_Length = 1.0f;
+    // public float Invincible_Counter = 0.0f;
 
     public override void Start()
     {
@@ -43,7 +47,7 @@ public class Player : Unit
         Create_Weapon(Weapon_Type.Bible);
         Create_Weapon(Weapon_Type.Gun);
         Create_Weapon(Weapon_Type.SpellBook);
-        Create_Weapon(Weapon_Type.Missile);
+        Create_Weapon(Weapon_Type.Launchaer);
         Create_Weapon(Weapon_Type.Force);
 
         // Xspeed = 200;
@@ -78,7 +82,6 @@ public class Player : Unit
     public override void Hitted(float p_Damage_Value)
     {
         base.Hitted(p_Damage_Value);
-
         All_Manager.instance.UI_M.Update_Player_HPBar_Image(Current_HP / Max_HP);
     }
 
@@ -89,7 +92,7 @@ public class Player : Unit
 
         All_Manager.instance.GameMode_M.GM_State = GameMode_State.GameOver;
 
-        Destroy(this.gameObject);
+        // Destroy(this.gameObject);
     }
 
     public void Create_Weapon(Weapon_Type p_WT)
@@ -102,7 +105,7 @@ public class Player : Unit
     {
         float Skill_Cool = 5.0f;
         float Skill_Full = 0.0f;
-        
+
         switch (p_WT)
         {
             case Weapon_Type.None:
@@ -154,22 +157,10 @@ public class Player : Unit
                     }
                 }
                 break;
-            case Weapon_Type.Missile:
+            case Weapon_Type.Launchaer:
                 {
-                    GameObject Temp_Go = Instantiate(Missile_Go, null);
-                    // Temp_Go.transform.parent = this.transform; 
-                    if (Temp_Go.GetComponent<Missile>())
-                    {
-                        yield return new WaitUntil(() => Temp_Go.GetComponent<Missile>().SR);
-                        Temp_Go.GetComponent<Missile>().SR.sprite = All_Manager.instance.Resource_M.STO_Missile.Sprite_Image;
-                        Temp_Go.GetComponent<Missile>().damage = All_Manager.instance.Resource_M.STO_Missile.damage;
-                        Temp_Go.GetComponent<Missile>().speed = All_Manager.instance.Resource_M.STO_Missile.speed;
-                        Temp_Go.GetComponent<Missile>().range = All_Manager.instance.Resource_M.STO_Missile.range;
-                        Temp_Go.GetComponent<Missile>().time = All_Manager.instance.Resource_M.STO_Missile.time;
-                        Temp_Go.GetComponent<Missile>().level = All_Manager.instance.Resource_M.STO_Missile.level;
-
-                    }
-
+                    GameObject Temp_Go = Instantiate(Launchaer_Go, null);
+                    Temp_Go.transform.parent = this.transform;
                 }
                 break;
             case Weapon_Type.Force:
@@ -216,6 +207,11 @@ public class Player : Unit
     public bool Check_Weapon(Weapon_Type p_WT)
     {
         return false;
+    }
+
+    public override void Unit_Clear()
+    {
+        Destroy(this.gameObject);
     }
 
     //public Weapon_Package Get_Weapon(Weapon_Type p_WT)

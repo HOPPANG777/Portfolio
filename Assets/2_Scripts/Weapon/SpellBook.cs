@@ -29,7 +29,7 @@ public class SpellBook : Weapon
 
     public IEnumerator C_Spell()
     {
-        float AttackRate = 2.0f;
+        float AttackRate = 6.0f;
 
         while (true)
         {

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{16EC1C5D-FFA1-FF2E-A578-F10CB5401F9B}</ProjectGuid>
+    <ProjectGuid>{FDC71BC4-4EAB-2124-6EC5-F360CB9ABB63}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -63,7 +63,7 @@
     <Compile Include="Assets\2_Scripts\Weapon\Force.cs" />
     <Compile Include="Assets\2_Scripts\Weapon\Projectile\ProjectilePrefab.cs" />
     <Compile Include="Assets\2_Scripts\STO\STO_Weapon.cs" />
-    <Compile Include="Assets\2_Scripts\Weapon\Missile.cs" />
+    <Compile Include="Assets\2_Scripts\Weapon\Projectile\Missile.cs" />
     <Compile Include="Assets\2_Scripts\Weapon\Gun.cs" />
     <Compile Include="Assets\2_Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\2_Scripts\Unit\Enemy.cs" />
@@ -76,6 +76,7 @@
     <Compile Include="Assets\2_Scripts\Unit\Unit.cs" />
     <Compile Include="Assets\2_Scripts\Manager\Resource_Manager.cs" />
     <Compile Include="Assets\2_Scripts\Manager\All_Manager.cs" />
+    <Compile Include="Assets\2_Scripts\Weapon\Launcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\1_Resources\Sprites\2D Pixel RPG Icon Pack\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

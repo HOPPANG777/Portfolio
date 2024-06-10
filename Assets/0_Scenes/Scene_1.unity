@@ -272,7 +272,7 @@ MonoBehaviour:
   Current_Player: {fileID: 4074028131449406222, guid: 1a232190702e3d242bf4ea8b5ce4a345, type: 3}
   Enemy_List: []
   Kill_Count: 0
-  Spawn_Time: 3
+  Spawn_Time: 0.2
   Spawn_Timer: 0
 --- !u!4 &241192249
 Transform:
