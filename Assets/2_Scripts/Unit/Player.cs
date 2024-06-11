@@ -48,7 +48,7 @@ public class Player : Unit
         Create_Weapon(Weapon_Type.Gun);
         Create_Weapon(Weapon_Type.SpellBook);
         Create_Weapon(Weapon_Type.Launchaer);
-        Create_Weapon(Weapon_Type.Force);
+        // Create_Weapon(Weapon_Type.Force);
 
         // Xspeed = 200;
     }
@@ -161,6 +161,15 @@ public class Player : Unit
                 {
                     GameObject Temp_Go = Instantiate(Launchaer_Go, null);
                     Temp_Go.transform.parent = this.transform;
+                    if (Temp_Go.GetComponent<Launcher>())
+                    {
+                        Temp_Go.GetComponent<Launcher>().damage = All_Manager.instance.Resource_M.STO_Launcher.damage;
+                        Temp_Go.GetComponent<Launcher>().speed = All_Manager.instance.Resource_M.STO_Launcher.speed;
+                        Temp_Go.GetComponent<Launcher>().range = All_Manager.instance.Resource_M.STO_Launcher.range;
+                        Temp_Go.GetComponent<Launcher>().time = All_Manager.instance.Resource_M.STO_Launcher.time;
+                        Temp_Go.GetComponent<Launcher>().level = All_Manager.instance.Resource_M.STO_Launcher.level;
+                    }
+                    
                 }
                 break;
             case Weapon_Type.Force:
@@ -209,13 +218,14 @@ public class Player : Unit
         return false;
     }
 
-    public override void Unit_Clear()
-    {
-        Destroy(this.gameObject);
-    }
 
     //public Weapon_Package Get_Weapon(Weapon_Type p_WT)
     //{
     //
     //}
+
+    public override void Unit_Clear()
+    {
+        Destroy(this.gameObject);
+    }
 }

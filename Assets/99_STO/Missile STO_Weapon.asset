@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 50
   level: 0
-  speed: 1
-  range: 0
+  speed: 5
+  range: 0.5
   time: 0
   Sprite_Image: {fileID: 21300000, guid: 71eb9e7d89acd441aa055c59e5f1bc63, type: 3}

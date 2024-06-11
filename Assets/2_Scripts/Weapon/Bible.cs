@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 //https://unity-programmer.tistory.com/3
 public class Bible : Weapon
 {
-    public Transform target;
+    public Transform B_target;
 
     public override void Start()
     {
@@ -24,7 +24,7 @@ public class Bible : Weapon
         {
             float x = range * Mathf.Cos(time);
             float y = range * Mathf.Sin(time);
-            this.transform.localPosition = target.position + new Vector3(x, y, 0);
+            this.transform.localPosition = B_target.position + new Vector3(x, y, 0);
         }
         else
         {

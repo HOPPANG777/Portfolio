@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7857a07e83bf01a49bdbe4ca3b1f1882, type: 3}
   m_Name: Enemy3 STO_Unit
   m_EditorClassIdentifier: 
-  HP: 160
+  HP: 300
   Speed: 3
   Damage: 20
   Sprite_Image: {fileID: 21300000, guid: 38ee0c6d95e8a46eab6d9068f40dc3f1, type: 3}

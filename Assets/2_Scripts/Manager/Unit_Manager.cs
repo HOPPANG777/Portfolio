@@ -67,41 +67,24 @@ public class Unit_Manager : MonoBehaviour
             Temp_Go.transform.position = Player_Pos;
             Temp_Go.transform.rotation = Quaternion.identity;
             Temp_Go.transform.localScale = Vector3.one;
-            
+
             if (Temp_Go.GetComponent<Enemy>())
             {
+                Temp_Go.GetComponent<Enemy>().Max_HP = Temp_Go.GetComponent<Enemy>().Current_HP = All_Manager.instance.Resource_M.STO_Enemy.HP;
+
                 yield return new WaitUntil(() => Temp_Go.GetComponent<Enemy>().SR);
                 Temp_Go.GetComponent<Enemy>().SR.sprite = All_Manager.instance.Resource_M.STO_Enemy.Sprite_Image;
 
                 Temp_Go.GetComponent<Enemy>().Speed = All_Manager.instance.Resource_M.STO_Enemy.Speed;
                 Temp_Go.GetComponent<Enemy>().Damage = All_Manager.instance.Resource_M.STO_Enemy.Damage;
-                Temp_Go.GetComponent<Enemy>().HP = All_Manager.instance.Resource_M.STO_Enemy.HP;
-            } 
-            All_Manager.instance.GameMode_M.Enemy_List.Add(Temp_Go.GetComponent<Enemy>());
-        }
-    }
-
-
-    public void Clear_Enemy()
-    {
-        for (int i = 0; i < All_Manager.instance.GameMode_M.Enemy_List.Count; i++)
-        {
-            if (All_Manager.instance.GameMode_M.Enemy_List[i] != null)
-            {
-                Destroy(All_Manager.instance.GameMode_M.Enemy_List[i]);
+                
+                All_Manager.instance.GameMode_M.Enemy_List.Add(Temp_Go.GetComponent<Enemy>());
+                All_Manager.instance.GameMode_M.Current_Enemy = Temp_Go.GetComponent<Enemy>();
             }
         }
-        All_Manager.instance.GameMode_M.Enemy_List.Clear();
     }
-
-    public void Player_Reset()
-    {
-        Player_Go.transform.position = Vector3.zero;
-        Player_Go.transform.rotation = Quaternion.identity;
-        Player_Go.transform.localScale = Vector3.one;
-        Player_Go.SetActive(true);
-    }
-
+    
+}
     //public void Start()
     //{
     //    StartCoroutine(EnemySpawn());
@@ -134,4 +117,4 @@ public class Unit_Manager : MonoBehaviour
     //    Temp_Go.transform.rotation = Quaternion.identity;
     //    Temp_Go.transform.localScale = Vector3.one;
     //}
-}
+

@@ -19,6 +19,7 @@ public class GameMode_Manager : MonoBehaviour
     public GameMode_State GM_State = GameMode_State.Idle;
 
     public Player Current_Player = null;
+    public Enemy Current_Enemy = null;
     public List<Enemy> Enemy_List = new List<Enemy>();
 
     public int Kill_Count = 0;
@@ -34,6 +35,7 @@ public class GameMode_Manager : MonoBehaviour
     {
         if (GM_State == GameMode_State.Ingame)
         {
+            Time.timeScale = 1;
             //Time.delaTime 1초 만들수 있음
             //
             Spawn_Timer += Time.deltaTime;
@@ -51,6 +53,7 @@ public class GameMode_Manager : MonoBehaviour
         if (GM_State == GameMode_State.GameOver)
         {
             All_Manager.instance.UI_M.Update_Game_Over_Text_On();
+            Time.timeScale = 0f;
         }
     }
 
@@ -70,7 +73,8 @@ public class GameMode_Manager : MonoBehaviour
         // All_Manager.instance.GameMode_M.Enemy_List.Clear();
         // All_Manager.instance.GameMode_M.GM_State = GameMode_State.Ingame;
         All_Manager.instance.UI_M.Update_Game_Over_Text_Off();
-        All_Manager.instance.Unit_M.Clear_Enemy();
+        Current_Enemy.Unit_Clear();
+        Current_Player.Unit_Clear();
         All_Manager.instance.Unit_M.Create_Unit(Unit_Name.Player);
         All_Manager.instance.GameMode_M.GM_State = GameMode_State.Ingame;
     }

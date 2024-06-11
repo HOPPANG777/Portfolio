@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -30,7 +31,7 @@ public abstract class Unit : MonoBehaviour
 
         RB = this.AddComponent<Rigidbody2D>();
         RB.bodyType = RigidbodyType2D.Kinematic;
-        
+
         SR = this.AddComponent<SpriteRenderer>();
     }
 
@@ -41,12 +42,12 @@ public abstract class Unit : MonoBehaviour
 
     virtual public void Hitted(float p_Damage_Value)
     {
-            Current_HP -= p_Damage_Value;
-            if (Current_HP < 0)
-            {
-                Current_HP = 0;
-                Die();
-            }
+        Current_HP -= p_Damage_Value;
+        if (Current_HP < 0)
+        {
+            Current_HP = 0;
+            Die();
+        }
     }
 
     virtual public void Die()
@@ -58,21 +59,33 @@ public abstract class Unit : MonoBehaviour
 
     public abstract void Unit_Clear();
 
-    public void Push()
-    {
-        StartCoroutine(C_Push());
-    }
+    //virtual public void Push()
+    //{
+    //    StartCoroutine(C_Push());
+    //}
 
-    public IEnumerator C_Push()
-    {
-        float Push_Delay = 0.0f;
+    //virtual public IEnumerator C_Push()
+    //{
+    //    while (true)
+    //    {
 
-        while(true)
-        {
-            
-
-            yield return new WaitForSeconds(Push_Delay);
-        }
-    }
+    //    }
+    //    yield return null;
+    //}
 }
+
+/*
+푸쉬를 만드는걸 한번 생각해보자
+일단 탑다운이기 때문에 
+넉백이 한방향으로만 이루어져선 안된다.
+따라서 넉백되는 객체와 넉백을 하는 객체의 
+거리와 방향을 구해서 적용해야 한다
+하지만 이건 유닛이다 여기서 만들수는 없을꺼 같고 
+이걸 버추얼을 해서 플레이어랑 적에서 
+만들어야 겠다
+그럼 일단 하 시발 이걸 어케 하지
+이건 리턴을 해줘야 한단 말이지 
+그럼 yield null을 해주거나 다른걸 해줘야 하는데 
+
+*/
 

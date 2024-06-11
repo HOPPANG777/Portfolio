@@ -29,7 +29,7 @@ public class SpellBook : Weapon
 
     public IEnumerator C_Spell()
     {
-        float AttackRate = 6.0f;
+        float AttackRate = 5.0f;
 
         while (true)
         {
@@ -45,6 +45,7 @@ public class SpellBook : Weapon
                         Temp_Go.GetComponent<Lightning>().SR.sprite = All_Manager.instance.Resource_M.STO_Lightning.Sprite_Image;
                         Temp_Go.GetComponent<Lightning>().damage = All_Manager.instance.Resource_M.STO_Lightning.damage;
                     }
+                    Destroy(Temp_Go, 2.5f);
                 }
             }
             else

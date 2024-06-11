@@ -14,7 +14,7 @@ public class Launcher : Weapon
 
     public override void Update()
     {
-        base.Update();
+        
     }
 
     public void Missile_Detected()
@@ -28,59 +28,19 @@ public class Launcher : Weapon
 
         while (true)
         {
-
-            if (All_Manager.instance.GameMode_M.Enemy_List.Count > 5)
+            GameObject Temp_Go = Instantiate(Missile_Go, null);
+            Temp_Go.transform.parent = this.transform;
+            if (Temp_Go.GetComponent<Missile>())
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    GameObject Temp_Go = Instantiate(Missile_Go, null);
-                    //Temp_Go.transform.parent = this.transform;
-
-
-                    //Vector3.Distance()
-
-                    Temp_Go.GetComponent<Missile>().target = All_Manager.instance.GameMode_M.Enemy_List[i].transform;
-
-                    if (Temp_Go.GetComponent<Missile>())
-                    {
-                        yield return new WaitUntil(() => Temp_Go.GetComponent<Missile>().SR);
-                        Temp_Go.GetComponent<Missile>().SR.sprite = All_Manager.instance.Resource_M.STO_Missile.Sprite_Image;
-                        Temp_Go.GetComponent<Missile>().damage = All_Manager.instance.Resource_M.STO_Missile.damage;
-                        Temp_Go.GetComponent<Missile>().speed = All_Manager.instance.Resource_M.STO_Missile.speed;
-                        Temp_Go.GetComponent<Missile>().range = All_Manager.instance.Resource_M.STO_Missile.range;
-                        Temp_Go.GetComponent<Missile>().time = All_Manager.instance.Resource_M.STO_Missile.time;
-                        Temp_Go.GetComponent<Missile>().level = All_Manager.instance.Resource_M.STO_Missile.level;
-                    }
-
-                }
-            
+                yield return new WaitUntil(() => Temp_Go.GetComponent<Missile>().SR);
+                Temp_Go.GetComponent<Missile>().SR.sprite = All_Manager.instance.Resource_M.STO_Missile.Sprite_Image;
+                Temp_Go.GetComponent<Missile>().damage = All_Manager.instance.Resource_M.STO_Missile.damage;
+                Temp_Go.GetComponent<Missile>().speed = All_Manager.instance.Resource_M.STO_Missile.speed;
+                Temp_Go.GetComponent<Missile>().range = All_Manager.instance.Resource_M.STO_Missile.range;
+                Temp_Go.GetComponent<Missile>().time = All_Manager.instance.Resource_M.STO_Missile.time;
+                Temp_Go.GetComponent<Missile>().level = All_Manager.instance.Resource_M.STO_Missile.level;
             }
 
-            else
-            {
-
-                for (int i = 0; i < All_Manager.instance.GameMode_M.Enemy_List.Count; i++)
-                {
-                    GameObject Temp_Go = Instantiate(Missile_Go, null);
-                    //Temp_Go.transform.parent = this.transform;
-
-                    Temp_Go.GetComponent<Missile>().target = All_Manager.instance.GameMode_M.Enemy_List[i].transform;
-
-
-                    if (Temp_Go.GetComponent<Missile>())
-                    {
-                        yield return new WaitUntil(() => Temp_Go.GetComponent<Missile>().SR);
-                        Temp_Go.GetComponent<Missile>().SR.sprite = All_Manager.instance.Resource_M.STO_Missile.Sprite_Image;
-                        Temp_Go.GetComponent<Missile>().damage = All_Manager.instance.Resource_M.STO_Missile.damage;
-                        Temp_Go.GetComponent<Missile>().speed = All_Manager.instance.Resource_M.STO_Missile.speed;
-                        Temp_Go.GetComponent<Missile>().range = All_Manager.instance.Resource_M.STO_Missile.range;
-                        Temp_Go.GetComponent<Missile>().time = All_Manager.instance.Resource_M.STO_Missile.time;
-                        Temp_Go.GetComponent<Missile>().level = All_Manager.instance.Resource_M.STO_Missile.level;
-                    }
-
-                }
-
-            }
 
             yield return new WaitForSeconds(AttackRate);
         }

@@ -18,8 +18,9 @@ public class Resource_Manager : MonoBehaviour
     public STO_Weapon STO_SpellBook;
     public STO_Weapon STO_Gun;
     public STO_Weapon STO_Force;
-    public STO_Weapon STO_Missile;
+    public STO_Weapon STO_Launcher;
 
+    public STO_Weapon STO_Missile;
     public STO_Weapon STO_Lightning;
     public STO_Weapon STO_Projectile;
 }

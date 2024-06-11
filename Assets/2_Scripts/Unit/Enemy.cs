@@ -25,7 +25,7 @@ public class Enemy : Unit
             Vector3 dir = target.position - this.transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             this.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-            
+
             //니가 바라보는 정면으로 앞으로 가기
             this.transform.position = this.transform.position + (this.transform.up * (Speed * Time.deltaTime));
         }
@@ -44,7 +44,7 @@ public class Enemy : Unit
 
         All_Manager.instance.GameMode_M.Enemy_Down();
 
-        // Destroy(this.gameObject);
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -69,6 +69,10 @@ public class Enemy : Unit
 
     public override void Unit_Clear()
     {
-        Destroy(this.gameObject);
+        for (int i = All_Manager.instance.GameMode_M.Enemy_List.Count - 1; i >= 0; i--)
+        {
+            All_Manager.instance.GameMode_M.Enemy_List.Remove(All_Manager.instance.GameMode_M.Enemy_List[i]);
+        }
     }
+
 }

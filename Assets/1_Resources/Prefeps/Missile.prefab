@@ -52,5 +52,8 @@ MonoBehaviour:
   speed: 0
   range: 0
   time: 0
-  target: {fileID: 1460374614585689181, guid: 02eed0be75cb64c41a4cfef1abf35b92, type: 3}
+  TO_Del: 0
+  Dir: 0
   RotateSpeed: 200
+  M_target: {fileID: 0}
+  BoxSize: {x: 1, y: 1}
