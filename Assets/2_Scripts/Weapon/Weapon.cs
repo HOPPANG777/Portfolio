@@ -5,11 +5,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
     public SpriteRenderer SR;
     public BoxCollider2D BC;
     public Rigidbody2D RB;
+
+    public Unit Mine;
 
     public float damage = 0;
     public int level = 0;
@@ -28,10 +30,16 @@ public class Weapon : MonoBehaviour
         SR = this.AddComponent<SpriteRenderer>();
     }
 
+    public void Weapon_Init(Unit p_User)
+    {
+        Mine = p_User;
+    }
+
     virtual public void Update()
     {
 
     }
+
 
     virtual public void OnTriggerStay2D(Collider2D collision)
     {
@@ -44,7 +52,7 @@ public class Weapon : MonoBehaviour
 
             Temp.Hitted(damage);
 
-            Debug.Log("Enemey Hitted");
+            //Debug.Log("Enemey Hitted");
         }
     }
 

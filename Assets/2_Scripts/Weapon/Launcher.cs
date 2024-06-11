@@ -17,6 +17,8 @@ public class Launcher : Weapon
         
     }
 
+
+
     public void Missile_Detected()
     {
         StartCoroutine(C_Missile_Detected());
@@ -24,12 +26,14 @@ public class Launcher : Weapon
 
     public IEnumerator C_Missile_Detected()
     {
+        yield return new WaitUntil(() => Mine);
+
         float AttackRate = 2.0f;
 
         while (true)
         {
-            GameObject Temp_Go = Instantiate(Missile_Go, null);
-            Temp_Go.transform.parent = this.transform;
+            GameObject Temp_Go = Instantiate(Missile_Go, Mine.transform.position, Quaternion.identity, null);
+            // Temp_Go.transform.parent = this.transform;
             if (Temp_Go.GetComponent<Missile>())
             {
                 yield return new WaitUntil(() => Temp_Go.GetComponent<Missile>().SR);
@@ -40,7 +44,6 @@ public class Launcher : Weapon
                 Temp_Go.GetComponent<Missile>().time = All_Manager.instance.Resource_M.STO_Missile.time;
                 Temp_Go.GetComponent<Missile>().level = All_Manager.instance.Resource_M.STO_Missile.level;
             }
-
 
             yield return new WaitForSeconds(AttackRate);
         }

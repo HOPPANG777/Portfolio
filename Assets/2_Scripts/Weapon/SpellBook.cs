@@ -17,6 +17,8 @@ public class SpellBook : Weapon
 
     }
 
+
+
     public override void OnTriggerStay2D(Collider2D collision)
     {
         base.OnTriggerStay2D(collision);
@@ -29,6 +31,8 @@ public class SpellBook : Weapon
 
     public IEnumerator C_Spell()
     {
+        yield return new WaitUntil(() => Mine);
+
         float AttackRate = 5.0f;
 
         while (true)
@@ -67,5 +71,4 @@ public class SpellBook : Weapon
         }
 
     }
-
 }

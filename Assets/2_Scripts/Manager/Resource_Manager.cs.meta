@@ -3,7 +3,23 @@ guid: 87917c1e3a0f9ef4a9ce3c5044701c9b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Player_Prefab_Go: {instanceID: 0}
+  - Enemy_Prefab_Go: {instanceID: 0}
+  - STO_Player: {instanceID: 0}
+  - STO_Enemy: {instanceID: 0}
+  - STO_Enemy2: {instanceID: 0}
+  - STO_Enemy3: {instanceID: 0}
+  - STO_Enemy4: {instanceID: 0}
+  - STO_Enemy5: {instanceID: 0}
+  - STO_Bible: {fileID: 11400000, guid: c0197f6cc3d8dea4da1e97d10db7dcea, type: 2}
+  - STO_SpellBook: {instanceID: 0}
+  - STO_Gun: {instanceID: 0}
+  - STO_Force: {instanceID: 0}
+  - STO_Launcher: {instanceID: 0}
+  - STO_Missile: {instanceID: 0}
+  - STO_Lightning: {instanceID: 0}
+  - STO_Projectile: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

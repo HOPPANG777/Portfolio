@@ -9,7 +9,6 @@ using UnityEngine.UIElements;
 //https://unity-programmer.tistory.com/3
 public class Bible : Weapon
 {
-    public Transform B_target;
 
     public override void Start()
     {
@@ -19,18 +18,18 @@ public class Bible : Weapon
 
     public override void Update()
     {
+
         time += Time.deltaTime * speed;
         if (time < 360)
         {
             float x = range * Mathf.Cos(time);
             float y = range * Mathf.Sin(time);
-            this.transform.localPosition = B_target.position + new Vector3(x, y, 0);
+            this.transform.localPosition = Mine.transform.position + new Vector3(x, y, 0);
         }
         else
         {
             time = 0;
         }
-
         //time += Time.deltaTime * speed;
         //if (time < 360)
         //{
@@ -48,11 +47,12 @@ public class Bible : Weapon
         //    time = 0;
         //}
     }
-
+    
     public override void OnTriggerStay2D(Collider2D collision)
     {
         base.OnTriggerStay2D(collision);
     }
+
 }
 
 /*

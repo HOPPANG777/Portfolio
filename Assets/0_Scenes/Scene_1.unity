@@ -270,6 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM_State: 0
   Current_Player: {fileID: 4074028131449406222, guid: 1a232190702e3d242bf4ea8b5ce4a345, type: 3}
+  Current_Enemy: {fileID: 0}
   Enemy_List: []
   Kill_Count: 0
   Spawn_Time: 0.2
@@ -443,6 +444,7 @@ MonoBehaviour:
   STO_SpellBook: {fileID: 11400000, guid: 3e9cc81f264255049bf60355ed4e9b88, type: 2}
   STO_Gun: {fileID: 11400000, guid: c62f38a626d3c904fb2733fa8f1f7bbe, type: 2}
   STO_Force: {fileID: 11400000, guid: 42b344b6ef78cd747b87967304377b58, type: 2}
+  STO_Launcher: {fileID: 11400000, guid: d973c1911d0ddec4392be056b90c7805, type: 2}
   STO_Missile: {fileID: 11400000, guid: 9f77947fe3e16b44a93d1c5d9ed5d239, type: 2}
   STO_Lightning: {fileID: 11400000, guid: 28050ef470e8a2d4a9474fc54543aef1, type: 2}
   STO_Projectile: {fileID: 11400000, guid: a5c6dec42120ed94cad2aff82fe4bfa9, type: 2}

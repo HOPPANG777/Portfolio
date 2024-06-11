@@ -21,6 +21,8 @@ public class Lightning : Weapon
         }
     }
 
+    
+
     public override void OnTriggerStay2D(Collider2D collision)
     {
         base.OnTriggerStay2D(collision);

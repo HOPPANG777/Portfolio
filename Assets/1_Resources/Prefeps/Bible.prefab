@@ -52,4 +52,4 @@ MonoBehaviour:
   speed: 0
   range: 0
   time: 0
-  B_target: {fileID: 996344030151624737, guid: 1a232190702e3d242bf4ea8b5ce4a345, type: 3}
+  B_target: {fileID: 0}

@@ -103,8 +103,11 @@ public class Player : Unit
     //무기 만들기
     public IEnumerator C_Create_Weapon(Weapon_Type p_WT)
     {
+
         float Skill_Cool = 5.0f;
         float Skill_Full = 0.0f;
+
+        GameObject Temp_Go = null;
 
         switch (p_WT)
         {
@@ -115,7 +118,7 @@ public class Player : Unit
                 break;
             case Weapon_Type.Bible:
                 {
-                    GameObject Temp_Go = Instantiate(Bible_Go, null);
+                    Temp_Go = Instantiate(Bible_Go, null);
                     Temp_Go.transform.parent = this.transform;
                     if (Temp_Go.GetComponent<Bible>())
                     {
@@ -131,10 +134,11 @@ public class Player : Unit
                 break;
             case Weapon_Type.SpellBook:
                 {
-                    GameObject Temp_Go = Instantiate(SpellBook_Go, null);
+                    Temp_Go = Instantiate(SpellBook_Go, null);
                     Temp_Go.transform.parent = this.transform;
                     if (Temp_Go.GetComponent<SpellBook>())
                     {
+                        
                         Temp_Go.GetComponent<SpellBook>().damage = All_Manager.instance.Resource_M.STO_SpellBook.damage;
                         Temp_Go.GetComponent<SpellBook>().speed = All_Manager.instance.Resource_M.STO_SpellBook.speed;
                         Temp_Go.GetComponent<SpellBook>().range = All_Manager.instance.Resource_M.STO_SpellBook.range;
@@ -145,10 +149,12 @@ public class Player : Unit
                 break;
             case Weapon_Type.Gun:
                 {
-                    GameObject Temp_Go = Instantiate(Gun_Go, null);
+                    Temp_Go = Instantiate(Gun_Go, null);
                     Temp_Go.transform.parent = this.transform;
                     if (Temp_Go.GetComponent<Gun>())
                     {
+                        yield return new WaitUntil(() => Temp_Go.GetComponent<Gun>().SR);
+                        
                         Temp_Go.GetComponent<Gun>().damage = All_Manager.instance.Resource_M.STO_Gun.damage;
                         Temp_Go.GetComponent<Gun>().speed = All_Manager.instance.Resource_M.STO_Gun.speed;
                         Temp_Go.GetComponent<Gun>().range = All_Manager.instance.Resource_M.STO_Gun.range;
@@ -159,11 +165,14 @@ public class Player : Unit
                 break;
             case Weapon_Type.Launchaer:
                 {
-                    GameObject Temp_Go = Instantiate(Launchaer_Go, null);
+                    Temp_Go = Instantiate(Launchaer_Go, null);
                     Temp_Go.transform.parent = this.transform;
                     if (Temp_Go.GetComponent<Launcher>())
                     {
-                        Temp_Go.GetComponent<Launcher>().damage = All_Manager.instance.Resource_M.STO_Launcher.damage;
+                        yield return new WaitUntil(() => Temp_Go.GetComponent<Launcher>().SR);
+                        
+
+                        Temp_Go.GetComponent<Launcher>().damage  = All_Manager.instance.Resource_M.STO_Launcher.damage;
                         Temp_Go.GetComponent<Launcher>().speed = All_Manager.instance.Resource_M.STO_Launcher.speed;
                         Temp_Go.GetComponent<Launcher>().range = All_Manager.instance.Resource_M.STO_Launcher.range;
                         Temp_Go.GetComponent<Launcher>().time = All_Manager.instance.Resource_M.STO_Launcher.time;
@@ -180,10 +189,11 @@ public class Player : Unit
                         Skill_Full += Time.deltaTime;
                         All_Manager.instance.UI_M.Update_Player_Skill_Image(Skill_Full / Skill_Cool);
 
-                        GameObject Temp_Go = Instantiate(Force_Go, null);
+                        Temp_Go = Instantiate(Force_Go, null);
                         Temp_Go.transform.parent = this.transform;
                         if (Temp_Go.GetComponent<Force>())
                         {
+                           
                             Temp_Go.GetComponent<Force>().damage = All_Manager.instance.Resource_M.STO_Force.damage;
                             Temp_Go.GetComponent<Force>().speed = All_Manager.instance.Resource_M.STO_Force.speed;
                             Temp_Go.GetComponent<Force>().range = All_Manager.instance.Resource_M.STO_Force.range;
@@ -201,6 +211,12 @@ public class Player : Unit
                 {
                 }
                 break;
+        }
+
+        if(Temp_Go.GetComponent<Weapon>())
+        {
+            yield return new WaitUntil(() => Temp_Go.GetComponent<Weapon>().Mine);
+            Temp_Go.GetComponent<Weapon>().Weapon_Init(this);
         }
     }
 
