@@ -47,17 +47,15 @@ MonoBehaviour:
   SR: {fileID: 0}
   BC: {fileID: 0}
   RB: {fileID: 0}
-  Speed: 1
-  Xspeed: 2
-  Yspeed: 2
-  HP: 0
   Max_HP: 100
   Current_HP: 100
-  Damage: 0
+  Unit_Damage: 0
+  Unit_Speed: 0
+  Unit_HP: 0
   InputVec: {x: 0, y: 0}
   Weapon_Pocket_List: []
   Bible_Go: {fileID: 5578792535807713805, guid: f3f22aaf44019b1499712c7974ca479c, type: 3}
-  Gun_Go: {fileID: 6316549662862081849, guid: b890598d5d3881644833058ca6b53a45, type: 3}
-  SpellBook_Go: {fileID: 4526960275445117917, guid: 603006a0c4fe4bb448a47ae47578f79f, type: 3}
-  Launchaer_Go: {fileID: 3606730092015842534, guid: 88632e51713a8c447a21ed062b59d891, type: 3}
   Force_Go: {fileID: 5875188211626388065, guid: 23679d379c910204db5ea0a1a7beb54f, type: 3}
+  SpellBook_Go: {fileID: 4526960275445117917, guid: 603006a0c4fe4bb448a47ae47578f79f, type: 3}
+  Bullet_Launcher_Go: {fileID: 6316549662862081849, guid: b890598d5d3881644833058ca6b53a45, type: 3}
+  Missile_Launcher_Go: {fileID: 3606730092015842534, guid: 88632e51713a8c447a21ed062b59d891, type: 3}

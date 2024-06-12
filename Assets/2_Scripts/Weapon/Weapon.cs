@@ -13,11 +13,11 @@ public abstract class Weapon : MonoBehaviour
 
     public Unit Mine;
 
-    public float damage = 0;
-    public int level = 0;
-    public float speed = 0;
-    public float range = 0;
-    public float time = 0;
+    public float Weapon_Damage = 0;
+    public float Weapon_Speed = 0;
+    public float Weapon_Range = 0;
+    public float Weapon_Time = 0;
+    public int Weapon_Level = 0;
 
     virtual public void Start()
     {
@@ -40,17 +40,16 @@ public abstract class Weapon : MonoBehaviour
 
     }
 
-
     virtual public void OnTriggerStay2D(Collider2D collision)
     {
         //충돌체가 이 컴포넌트를 가지고 있는가?
         if (collision.transform.GetComponent<Enemy>())
         {
-            collision.transform.GetComponent<Enemy>().Hitted(damage);
+            collision.transform.GetComponent<Enemy>().Hitted(Weapon_Damage);
 
             var Temp = collision.transform.GetComponent<Enemy>();
 
-            Temp.Hitted(damage);
+            Temp.Hitted(Weapon_Damage);
 
             //Debug.Log("Enemey Hitted");
         }

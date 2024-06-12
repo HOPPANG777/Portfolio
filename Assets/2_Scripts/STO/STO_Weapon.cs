@@ -6,11 +6,11 @@ using UnityEngine;
 public class STO_Weapon : ScriptableObject
 {
 
-    public float damage = 0;
-    public int level = 0;
-    public float speed = 0;
-    public float range = 0;
-    public float time = 0;
+    public float Weapon_Damage = 0;
+    public float Weapon_Speed = 0;
+    public float Weapon_Range = 0;
+    public float Weapon_Time = 0;
+    public int Weapon_Level = 0;
 
     public Sprite Sprite_Image;
 }

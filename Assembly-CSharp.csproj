@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{FDC71BC4-4EAB-2124-6EC5-F360CB9ABB63}</ProjectGuid>
+    <ProjectGuid>{16EC1C5D-FFA1-FF2E-A578-F10CB5401F9B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -61,11 +61,11 @@
     <Compile Include="Assets\2_Scripts\STO\STO_Unit.cs" />
     <Compile Include="Assets\2_Scripts\Weapon\SpellBook.cs" />
     <Compile Include="Assets\2_Scripts\Weapon\Force.cs" />
-    <Compile Include="Assets\2_Scripts\Weapon\Projectile\ProjectilePrefab.cs" />
+    <Compile Include="Assets\2_Scripts\Weapon\Projectile\Bullet.cs" />
     <Compile Include="Assets\2_Scripts\STO\STO_Weapon.cs" />
     <Compile Include="Assets\2_Scripts\Weapon\Projectile\Missile.cs" />
-    <Compile Include="Assets\2_Scripts\Weapon\Launcher.cs" />
-    <Compile Include="Assets\2_Scripts\Weapon\Gun.cs" />
+    <Compile Include="Assets\2_Scripts\Weapon\Missile_Launcher.cs" />
+    <Compile Include="Assets\2_Scripts\Weapon\Bullet_Launcher.cs" />
     <Compile Include="Assets\2_Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\2_Scripts\Unit\Enemy.cs" />
     <Compile Include="Assets\2_Scripts\Weapon\Bible.cs" />

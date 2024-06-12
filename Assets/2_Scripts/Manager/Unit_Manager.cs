@@ -34,13 +34,9 @@ public class Unit_Manager : MonoBehaviour
             //이 게임오브젝트 이 컴포넌트를 갖고 있는지의 bool 값
             if (Temp_Go.GetComponent<Player>())
             {
-                Temp_Go.GetComponent<Player>().Max_HP = Temp_Go.GetComponent<Player>().Current_HP = All_Manager.instance.Resource_M.STO_Player.HP;
-
                 //SR이 있을때까지 기다려
                 yield return new WaitUntil(() => Temp_Go.GetComponent<Player>().SR);
-
-                Temp_Go.GetComponent<Player>().SR.sprite = All_Manager.instance.Resource_M.STO_Player.Sprite_Image;
-                Temp_Go.GetComponent<Player>().Speed = All_Manager.instance.Resource_M.STO_Player.Speed;
+                All_Manager.instance.Resource_M.Unit_Stat(Temp_Go.GetComponent<Player>(), All_Manager.instance.Resource_M.STO_Player);
 
                 All_Manager.instance.GameMode_M.Current_Player = Temp_Go.GetComponent<Player>();
             }
@@ -70,14 +66,9 @@ public class Unit_Manager : MonoBehaviour
 
             if (Temp_Go.GetComponent<Enemy>())
             {
-                Temp_Go.GetComponent<Enemy>().Max_HP = Temp_Go.GetComponent<Enemy>().Current_HP = All_Manager.instance.Resource_M.STO_Enemy.HP;
-
                 yield return new WaitUntil(() => Temp_Go.GetComponent<Enemy>().SR);
-                Temp_Go.GetComponent<Enemy>().SR.sprite = All_Manager.instance.Resource_M.STO_Enemy.Sprite_Image;
+                All_Manager.instance.Resource_M.Unit_Stat(Temp_Go.GetComponent<Enemy>(), All_Manager.instance.Resource_M.STO_Enemy1);
 
-                Temp_Go.GetComponent<Enemy>().Speed = All_Manager.instance.Resource_M.STO_Enemy.Speed;
-                Temp_Go.GetComponent<Enemy>().Damage = All_Manager.instance.Resource_M.STO_Enemy.Damage;
-                
                 All_Manager.instance.GameMode_M.Enemy_List.Add(Temp_Go.GetComponent<Enemy>());
                 All_Manager.instance.GameMode_M.Current_Enemy = Temp_Go.GetComponent<Enemy>();
             }

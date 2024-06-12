@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98454607a08893a458162529e1c6f440, type: 3}
   m_Name: SpellBook STO_Weapon
   m_EditorClassIdentifier: 
-  damage: 0
-  level: 1
-  speed: 0
-  range: 0
-  time: 0
+  Weapon_Damage: 140
+  Weapon_Speed: 0
+  Weapon_Range: 0
+  Weapon_Time: 0
+  Weapon_Level: 0
   Sprite_Image: {fileID: 0}

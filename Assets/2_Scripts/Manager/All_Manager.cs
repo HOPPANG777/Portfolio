@@ -22,16 +22,8 @@ public class All_Manager : MonoBehaviour
         else
         {
             instance = this;
-        }
-        //if (instance == null)
-        //{
-        //    instance = this;
-        //    DontDestroyOnLoad(this.gameObject);
-        //}
-        //else
-        //{
-        //    Destroy(this.gameObject);
-        //}    
+            DontDestroyOnLoad(this.gameObject);
+        }  
     }
 
     void Start()

@@ -13,7 +13,7 @@ public class Missile : Weapon
 
     public Transform M_target;
 
-    public Vector2 BoxSize = new Vector2(1, 1);
+    public Vector2 BoxSize = new Vector2(2, 2);
 
     public override void Start()
     {
@@ -60,19 +60,20 @@ public class Missile : Weapon
             Vector2 Dir = M_target.position - this.transform.position;
             float angle = Mathf.Atan2(Dir.y, Dir.x) * Mathf.Rad2Deg;
             this.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-        }
 
+        }
         else Debug.Log("NULL");
+        
+        this.transform.position = this.transform.position + this.transform.up * (Weapon_Speed * Time.deltaTime);
 
         //그 방향을 향해서 앞으로
-        this.transform.position = this.transform.position + this.transform.up * (speed * Time.deltaTime);
 
         //TO_Del -= Time.deltaTime;
         //if (TO_Del < 0)
         //{
         //    Destroy(this.gameObject);
         //}
-        
+
     }
 
 
@@ -80,10 +81,10 @@ public class Missile : Weapon
     public override void OnTriggerStay2D(Collider2D collision)
     {
         base.OnTriggerStay2D(collision);
-        if (collision.transform.GetComponent<Enemy>())
-        {
-            Destroy(this.gameObject);
-        }
+        //if (collision.transform.GetComponent<Enemy>())
+        //{
+        //    Destroy(this.gameObject);
+        //}
     }
 
 }

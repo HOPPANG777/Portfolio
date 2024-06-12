@@ -13,16 +13,15 @@ public abstract class Unit : MonoBehaviour
     public Rigidbody2D RB;
     protected bool isDead = false;
 
-    public float Speed = 1.0f;
-    public float Xspeed = 2.0f;
-    public float Yspeed = 2.0f;
-
-    public float HP = 0.0f;
-
+    //public float Xspeed = 2.0f;
+    //public float Yspeed = 2.0f;
+    
     public float Max_HP = 100;
     public float Current_HP = 100;
 
-    public float Damage = 0;
+    public float Unit_Damage = 0.0f;
+    public float Unit_Speed = 0.0f;
+    public float Unit_HP = 0.0f;
 
     virtual public void Start()
     {

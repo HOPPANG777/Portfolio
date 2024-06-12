@@ -269,11 +269,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GM_State: 0
-  Current_Player: {fileID: 4074028131449406222, guid: 1a232190702e3d242bf4ea8b5ce4a345, type: 3}
+  Current_Player: {fileID: 0}
   Current_Enemy: {fileID: 0}
   Enemy_List: []
   Kill_Count: 0
-  Spawn_Time: 0.2
+  Spawn_Time: 1
   Spawn_Timer: 0
 --- !u!4 &241192249
 Transform:
@@ -435,19 +435,19 @@ MonoBehaviour:
   Player_Prefab_Go: {fileID: 996344030151624736, guid: 1a232190702e3d242bf4ea8b5ce4a345, type: 3}
   Enemy_Prefab_Go: {fileID: 1460374614585689180, guid: 02eed0be75cb64c41a4cfef1abf35b92, type: 3}
   STO_Player: {fileID: 11400000, guid: 7cb9ac43a9159204dabb084bb949fb2f, type: 2}
-  STO_Enemy: {fileID: 11400000, guid: 6d4a86aa30d291748872b2dc18c8563a, type: 2}
+  STO_Enemy1: {fileID: 11400000, guid: 6d4a86aa30d291748872b2dc18c8563a, type: 2}
   STO_Enemy2: {fileID: 11400000, guid: a81c55f9d63711b4fb106947fe7b14e2, type: 2}
   STO_Enemy3: {fileID: 11400000, guid: 42ce350375a1f8d42a02bd28c793e1d2, type: 2}
   STO_Enemy4: {fileID: 11400000, guid: e9c8d7b554cf8a54da87cdd6f953fac1, type: 2}
   STO_Enemy5: {fileID: 11400000, guid: d75f7df182e6bc94c82c57ee87228011, type: 2}
   STO_Bible: {fileID: 11400000, guid: c0197f6cc3d8dea4da1e97d10db7dcea, type: 2}
-  STO_SpellBook: {fileID: 11400000, guid: 3e9cc81f264255049bf60355ed4e9b88, type: 2}
-  STO_Gun: {fileID: 11400000, guid: c62f38a626d3c904fb2733fa8f1f7bbe, type: 2}
   STO_Force: {fileID: 11400000, guid: 42b344b6ef78cd747b87967304377b58, type: 2}
-  STO_Launcher: {fileID: 11400000, guid: d973c1911d0ddec4392be056b90c7805, type: 2}
+  STO_SpellBook: {fileID: 11400000, guid: 3e9cc81f264255049bf60355ed4e9b88, type: 2}
+  STO_Bullet_Launcher: {fileID: 11400000, guid: c62f38a626d3c904fb2733fa8f1f7bbe, type: 2}
+  STO_Missile_Launcher: {fileID: 11400000, guid: d973c1911d0ddec4392be056b90c7805, type: 2}
   STO_Missile: {fileID: 11400000, guid: 9f77947fe3e16b44a93d1c5d9ed5d239, type: 2}
   STO_Lightning: {fileID: 11400000, guid: 28050ef470e8a2d4a9474fc54543aef1, type: 2}
-  STO_Projectile: {fileID: 11400000, guid: a5c6dec42120ed94cad2aff82fe4bfa9, type: 2}
+  STO_Bullet: {fileID: 11400000, guid: a5c6dec42120ed94cad2aff82fe4bfa9, type: 2}
 --- !u!1 &426264457
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,51 +546,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
---- !u!1 &1014433397
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1014433399}
-  - component: {fileID: 1014433398}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1014433398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014433397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25d492f61b2530b4f9308fc170270800, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AA: 1
---- !u!4 &1014433399
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014433397}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.45502645, y: 0.0661277, z: -0.005686363}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1042108528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,7 +1465,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -100, y: 100}
+  m_AnchoredPosition: {x: -100, y: 115}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.49999982, y: 0.49999994}
 --- !u!114 &1748614177

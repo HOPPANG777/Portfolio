@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Enemy : Unit
 {
-    public float AttackTime = 0.0f;
-    public float WatingAttack = 0.0f;
+    public float Attack_Time = 0.0f;
+    public float Wating_Attack = 0.0f;
 
     public override void Start()
     {
         base.Start();
-        AttackTime = 0.0f;
-        WatingAttack = 7.0f;
+        Attack_Time = 0.0f;
+        Wating_Attack = 8.0f;
     }
 
     public override void Update()
@@ -27,10 +27,10 @@ public class Enemy : Unit
             this.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
             //니가 바라보는 정면으로 앞으로 가기
-            this.transform.position = this.transform.position + (this.transform.up * (Speed * Time.deltaTime));
+            this.transform.position = this.transform.position + (this.transform.up * (Unit_Speed * Time.deltaTime));
         }
 
-        AttackTime += Time.deltaTime;
+        Attack_Time += Time.deltaTime;
     }
 
     public override void Hitted(float p_Damage_Value)
@@ -52,17 +52,17 @@ public class Enemy : Unit
         //충돌체가 이 컴포넌트를 가지고 있는가?
         if (collision.transform.GetComponent<Player>())
         {
-            if (AttackTime > WatingAttack)
+            if (Attack_Time > Wating_Attack)
             {
-                collision.transform.GetComponent<Player>().Hitted(Damage);
+                collision.transform.GetComponent<Player>().Hitted(Unit_Damage);
 
                 var Temp = collision.transform.GetComponent<Player>();
 
-                Temp.Hitted(Damage);
+                Temp.Hitted(Unit_Damage);
 
                 Debug.Log("Player Hitted");
 
-                AttackTime = 0.0f;
+                Attack_Time = 0.0f;
             }
         }
     }

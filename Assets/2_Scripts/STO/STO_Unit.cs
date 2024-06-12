@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "STO/Unit")]
 public class STO_Unit : ScriptableObject
 {
-    public float HP;
-    public float Speed;
-    public float Damage;
+    public float Unit_HP;
+    public float Unit_Speed;
+    public float Unit_Damage;
 
     public Sprite Sprite_Image;
 }

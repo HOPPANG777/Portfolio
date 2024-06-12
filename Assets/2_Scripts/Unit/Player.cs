@@ -7,12 +7,12 @@ using UnityEngine;
 [System.Serializable]
 public enum Weapon_Type
 {
-    None,       // = "없음"
-    Bible,      // 성경
-    SpellBook,  // 플레이어 주변으로 떨어지는 번개
-    Gun,     // 총알 뿌리개
-    Launchaer,    // 유도탄
-    Force       // 일정 쿨타임후 주변 밀어냄
+    None,               // = "없음"
+    Bible,              // 성경
+    Force,              // 일정 쿨타임후 주변 밀어냄
+    SpellBook,          // 플레이어 주변으로 떨어지는 번개
+    Bullet_Launcher,    // 총알 뿌리개
+    Missile_Launcher    // 유도탄
 }
 
 [System.Serializable]
@@ -32,10 +32,10 @@ public class Player : Unit
     public List<Weapon_Package> Weapon_Pocket_List = new List<Weapon_Package>();
 
     public GameObject Bible_Go = null;
-    public GameObject Gun_Go = null;
-    public GameObject SpellBook_Go = null;
-    public GameObject Launchaer_Go = null;
     public GameObject Force_Go = null;
+    public GameObject SpellBook_Go = null;
+    public GameObject Bullet_Launcher_Go = null;
+    public GameObject Missile_Launcher_Go = null;
 
     // public float Invincible_Length = 1.0f;
     // public float Invincible_Counter = 0.0f;
@@ -45,10 +45,10 @@ public class Player : Unit
         base.Start();
 
         Create_Weapon(Weapon_Type.Bible);
-        Create_Weapon(Weapon_Type.Gun);
-        Create_Weapon(Weapon_Type.SpellBook);
-        Create_Weapon(Weapon_Type.Launchaer);
         // Create_Weapon(Weapon_Type.Force);
+        Create_Weapon(Weapon_Type.SpellBook);
+        Create_Weapon(Weapon_Type.Bullet_Launcher);
+        Create_Weapon(Weapon_Type.Missile_Launcher);
 
         // Xspeed = 200;
     }
@@ -58,19 +58,7 @@ public class Player : Unit
         InputVec.x = Input.GetAxis("Horizontal");
         InputVec.y = Input.GetAxis("Vertical");
 
-        //float xInput = Input.GetAxis("Horizontal");
-        //float yInput = Input.GetAxis("Vertical");
-
-        //float xSpeed = xInput * Xspeed * Time.deltaTime;
-        //float ySpeed = yInput * Yspeed * Time.deltaTime;
-
-        //앞 뒤으로가기
-        // this.transform.position = this.transform.position + (this.transform.up * ySpeed);
-
-        //돌기
-        // this.transform.Rotate(new Vector3(0, 0, -xSpeed));
-
-        Vector2 nextVec = InputVec.normalized * (Speed * Time.deltaTime);
+        Vector2 nextVec = InputVec.normalized * (Unit_Speed * Time.deltaTime);
         RB.MovePosition(RB.position + nextVec);
 
         if (InputVec.x != 0)
@@ -113,7 +101,6 @@ public class Player : Unit
         {
             case Weapon_Type.None:
                 {
-
                 }
                 break;
             case Weapon_Type.Bible:
@@ -123,12 +110,7 @@ public class Player : Unit
                     if (Temp_Go.GetComponent<Bible>())
                     {
                         yield return new WaitUntil(() => Temp_Go.GetComponent<Bible>().SR);
-                        Temp_Go.GetComponent<Bible>().SR.sprite = All_Manager.instance.Resource_M.STO_Bible.Sprite_Image;
-                        Temp_Go.GetComponent<Bible>().damage = All_Manager.instance.Resource_M.STO_Bible.damage;
-                        Temp_Go.GetComponent<Bible>().speed = All_Manager.instance.Resource_M.STO_Bible.speed;
-                        Temp_Go.GetComponent<Bible>().range = All_Manager.instance.Resource_M.STO_Bible.range;
-                        Temp_Go.GetComponent<Bible>().time = All_Manager.instance.Resource_M.STO_Bible.time;
-                        Temp_Go.GetComponent<Bible>().level = All_Manager.instance.Resource_M.STO_Bible.level;
+                        All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<Bible>(), All_Manager.instance.Resource_M.STO_Bible);
                     }
                 }
                 break;
@@ -138,47 +120,32 @@ public class Player : Unit
                     Temp_Go.transform.parent = this.transform;
                     if (Temp_Go.GetComponent<SpellBook>())
                     {
-                        
-                        Temp_Go.GetComponent<SpellBook>().damage = All_Manager.instance.Resource_M.STO_SpellBook.damage;
-                        Temp_Go.GetComponent<SpellBook>().speed = All_Manager.instance.Resource_M.STO_SpellBook.speed;
-                        Temp_Go.GetComponent<SpellBook>().range = All_Manager.instance.Resource_M.STO_SpellBook.range;
-                        Temp_Go.GetComponent<SpellBook>().time = All_Manager.instance.Resource_M.STO_SpellBook.time;
-                        Temp_Go.GetComponent<SpellBook>().level = All_Manager.instance.Resource_M.STO_SpellBook.level;
+                        yield return new WaitUntil(() => Temp_Go.GetComponent<SpellBook>().SR);
+                        All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<SpellBook>(), All_Manager.instance.Resource_M.STO_SpellBook);
                     }
                 }
                 break;
-            case Weapon_Type.Gun:
+            case Weapon_Type.Bullet_Launcher:
                 {
-                    Temp_Go = Instantiate(Gun_Go, null);
+                    Temp_Go = Instantiate(Bullet_Launcher_Go, null);
                     Temp_Go.transform.parent = this.transform;
-                    if (Temp_Go.GetComponent<Gun>())
+                    if (Temp_Go.GetComponent<Bullet_Launcher>())
                     {
-                        yield return new WaitUntil(() => Temp_Go.GetComponent<Gun>().SR);
-                        
-                        Temp_Go.GetComponent<Gun>().damage = All_Manager.instance.Resource_M.STO_Gun.damage;
-                        Temp_Go.GetComponent<Gun>().speed = All_Manager.instance.Resource_M.STO_Gun.speed;
-                        Temp_Go.GetComponent<Gun>().range = All_Manager.instance.Resource_M.STO_Gun.range;
-                        Temp_Go.GetComponent<Gun>().time = All_Manager.instance.Resource_M.STO_Gun.time;
-                        Temp_Go.GetComponent<Gun>().level = All_Manager.instance.Resource_M.STO_Gun.level;
+                        yield return new WaitUntil(() => Temp_Go.GetComponent<Bullet_Launcher>().SR);
+                        All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<Bullet_Launcher>(), All_Manager.instance.Resource_M.STO_Bullet_Launcher);
                     }
                 }
                 break;
-            case Weapon_Type.Launchaer:
+            case Weapon_Type.Missile_Launcher:
                 {
-                    Temp_Go = Instantiate(Launchaer_Go, null);
+                    Temp_Go = Instantiate(Missile_Launcher_Go, null);
                     Temp_Go.transform.parent = this.transform;
-                    if (Temp_Go.GetComponent<Launcher>())
+                    if (Temp_Go.GetComponent<Missile_Launcher>())
                     {
-                        yield return new WaitUntil(() => Temp_Go.GetComponent<Launcher>().SR);
-                        
+                        yield return new WaitUntil(() => Temp_Go.GetComponent<Missile_Launcher>().SR);
+                        All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<Missile_Launcher>(), All_Manager.instance.Resource_M.STO_Missile_Launcher);
+                    }
 
-                        Temp_Go.GetComponent<Launcher>().damage  = All_Manager.instance.Resource_M.STO_Launcher.damage;
-                        Temp_Go.GetComponent<Launcher>().speed = All_Manager.instance.Resource_M.STO_Launcher.speed;
-                        Temp_Go.GetComponent<Launcher>().range = All_Manager.instance.Resource_M.STO_Launcher.range;
-                        Temp_Go.GetComponent<Launcher>().time = All_Manager.instance.Resource_M.STO_Launcher.time;
-                        Temp_Go.GetComponent<Launcher>().level = All_Manager.instance.Resource_M.STO_Launcher.level;
-                    }
-                    
                 }
                 break;
             case Weapon_Type.Force:
@@ -188,17 +155,12 @@ public class Player : Unit
 
                         Skill_Full += Time.deltaTime;
                         All_Manager.instance.UI_M.Update_Player_Skill_Image(Skill_Full / Skill_Cool);
-
                         Temp_Go = Instantiate(Force_Go, null);
                         Temp_Go.transform.parent = this.transform;
                         if (Temp_Go.GetComponent<Force>())
                         {
-                           
-                            Temp_Go.GetComponent<Force>().damage = All_Manager.instance.Resource_M.STO_Force.damage;
-                            Temp_Go.GetComponent<Force>().speed = All_Manager.instance.Resource_M.STO_Force.speed;
-                            Temp_Go.GetComponent<Force>().range = All_Manager.instance.Resource_M.STO_Force.range;
-                            Temp_Go.GetComponent<Force>().time = All_Manager.instance.Resource_M.STO_Force.time;
-                            Temp_Go.GetComponent<Force>().level = All_Manager.instance.Resource_M.STO_Force.level;
+                            yield return new WaitUntil(() => Temp_Go.GetComponent<Force>().SR);
+                            All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<Force>(), All_Manager.instance.Resource_M.STO_Force);
                         }
                     }
                     else
@@ -208,18 +170,14 @@ public class Player : Unit
                 }
                 break;
             default:
-                {
-                }
                 break;
         }
 
-        if(Temp_Go.GetComponent<Weapon>())
+        if (Temp_Go.GetComponent<Weapon>())
         {
-            yield return new WaitUntil(() => Temp_Go.GetComponent<Weapon>().Mine);
             Temp_Go.GetComponent<Weapon>().Weapon_Init(this);
         }
     }
-
 
 
     //무기 업그레이드
@@ -245,3 +203,15 @@ public class Player : Unit
         Destroy(this.gameObject);
     }
 }
+
+//float xInput = Input.GetAxis("Horizontal");
+//float yInput = Input.GetAxis("Vertical");
+
+//float xSpeed = xInput * Xspeed * Time.deltaTime;
+//float ySpeed = yInput * Yspeed * Time.deltaTime;
+
+//앞 뒤으로가기
+// this.transform.position = this.transform.position + (this.transform.up * ySpeed);
+
+//돌기
+// this.transform.Rotate(new Vector3(0, 0, -xSpeed));

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class SpellBook : Weapon
 
     public override void Start()
     {
+        base.Start();
         Spell();
     }
 
@@ -16,8 +18,6 @@ public class SpellBook : Weapon
     {
 
     }
-
-
 
     public override void OnTriggerStay2D(Collider2D collision)
     {
@@ -31,9 +31,7 @@ public class SpellBook : Weapon
 
     public IEnumerator C_Spell()
     {
-        yield return new WaitUntil(() => Mine);
-
-        float AttackRate = 5.0f;
+        float Attack_Rate = 5.0f;
 
         while (true)
         {
@@ -46,10 +44,8 @@ public class SpellBook : Weapon
                     if (Temp_Go.GetComponent<Lightning>())
                     {
                         yield return new WaitUntil(() => Temp_Go.GetComponent<Lightning>().SR);
-                        Temp_Go.GetComponent<Lightning>().SR.sprite = All_Manager.instance.Resource_M.STO_Lightning.Sprite_Image;
-                        Temp_Go.GetComponent<Lightning>().damage = All_Manager.instance.Resource_M.STO_Lightning.damage;
+                        All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<Lightning>(), All_Manager.instance.Resource_M.STO_Lightning);
                     }
-                    Destroy(Temp_Go, 2.5f);
                 }
             }
             else
@@ -57,18 +53,17 @@ public class SpellBook : Weapon
                 for (int i = 0; i < All_Manager.instance.GameMode_M.Enemy_List.Count; i++)
                 {
                     GameObject Temp_Go = Instantiate(Lightning_Go, All_Manager.instance.GameMode_M.Enemy_List[i].transform.position, Quaternion.identity);
+
                     if (Temp_Go.GetComponent<Lightning>())
                     {
                         yield return new WaitUntil(() => Temp_Go.GetComponent<Lightning>().SR);
-                        Temp_Go.GetComponent<Lightning>().SR.sprite = All_Manager.instance.Resource_M.STO_Lightning.Sprite_Image;
-                        Temp_Go.GetComponent<Lightning>().damage = All_Manager.instance.Resource_M.STO_Lightning.damage;
+                        All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<Lightning>(), All_Manager.instance.Resource_M.STO_Lightning);
                     }
+
                     Destroy(Temp_Go, 2.5f);
                 }
             }
-
-            yield return new WaitForSeconds(AttackRate);
+            yield return new WaitForSeconds(Attack_Rate);
         }
-
     }
 }
