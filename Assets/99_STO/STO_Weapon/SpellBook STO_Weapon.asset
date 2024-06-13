@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98454607a08893a458162529e1c6f440, type: 3}
-  m_Name: Bullet_Launcher STO_Weapon
+  m_Name: SpellBook STO_Weapon
   m_EditorClassIdentifier: 
-  Weapon_Damage: 70
-  Weapon_Speed: 150
-  Weapon_Range: 0
-  Weapon_Time: 0
-  Weapon_Level: 10
+  Weapon_Damage: 1
+  Weapon_Speed: 1
+  Weapon_Range: 1
+  Weapon_Time: 1
+  Weapon_Level: 1
   Sprite_Image: {fileID: 0}

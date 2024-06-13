@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98454607a08893a458162529e1c6f440, type: 3}
-  m_Name: Force STO_Weapon
+  m_Name: Bullet_Launcher STO_Weapon
   m_EditorClassIdentifier: 
-  damage: 10
-  level: 1
-  speed: 0
-  range: 5
-  time: 0
+  Weapon_Damage: 70
+  Weapon_Speed: 150
+  Weapon_Range: 1
+  Weapon_Time: 1
+  Weapon_Level: 10
   Sprite_Image: {fileID: 0}

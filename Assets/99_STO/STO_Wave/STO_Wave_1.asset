@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98454607a08893a458162529e1c6f440, type: 3}
-  m_Name: Missile_Launcher STO_Weapon
+  m_Script: {fileID: 11500000, guid: 804f3832b8c4def45a2c774ad62ea0c0, type: 3}
+  m_Name: STO_Wave_1
   m_EditorClassIdentifier: 
-  Weapon_Damage: 0
-  Weapon_Speed: 150
-  Weapon_Range: 0
-  Weapon_Time: 0
-  Weapon_Level: 10
-  Sprite_Image: {fileID: 0}
+  WST: 0
+  Wave_Time: 0
+  Kill_Count: 0
+  Spawn_Time: 0
+  Spawn_Count: 3
+  STO_Enemy: {fileID: 11400000, guid: 6d4a86aa30d291748872b2dc18c8563a, type: 2}

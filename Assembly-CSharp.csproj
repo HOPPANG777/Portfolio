@@ -77,6 +77,7 @@
     <Compile Include="Assets\2_Scripts\Unit\Unit.cs" />
     <Compile Include="Assets\2_Scripts\Manager\Resource_Manager.cs" />
     <Compile Include="Assets\2_Scripts\Manager\All_Manager.cs" />
+    <Compile Include="Assets\2_Scripts\STO\STO_Wave.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\1_Resources\Sprites\2D Pixel RPG Icon Pack\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

@@ -7,19 +7,19 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Missile : Weapon
 {
-    //public float TO_Del = 0f;
+    public float TO_Del = 0f;
     public float Dir;
     public float RotateSpeed = 200f;
 
     public Transform M_target;
 
-    public Vector2 BoxSize = new Vector2(2, 2);
+    public Vector2 BoxSize = new Vector2(1, 1);
 
     public override void Start()
     {
         base.Start();
         BC.size = new Vector2(0.35f, 0.356f);
-        //TO_Del = 7.0f;
+        TO_Del = 7.0f;
     }
 
     public override void Update()
@@ -64,27 +64,25 @@ public class Missile : Weapon
         }
         else Debug.Log("NULL");
         
-        this.transform.position = this.transform.position + this.transform.up * (Weapon_Speed * Time.deltaTime);
+        this.transform.position = this.transform.position + this.transform.right * (Weapon_Speed * Time.deltaTime);
 
-        //그 방향을 향해서 앞으로
+        // 그 방향을 향해서 앞으로
 
-        //TO_Del -= Time.deltaTime;
-        //if (TO_Del < 0)
-        //{
-        //    Destroy(this.gameObject);
-        //}
+        TO_Del -= Time.deltaTime;
+        if (TO_Del < 0)
+        {
+            Destroy(this.gameObject);
+        }
 
     }
-
-
-
+    
     public override void OnTriggerStay2D(Collider2D collision)
     {
         base.OnTriggerStay2D(collision);
-        //if (collision.transform.GetComponent<Enemy>())
-        //{
-        //    Destroy(this.gameObject);
-        //}
+        if (collision.transform.GetComponent<Enemy>())
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }

@@ -5,6 +5,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
+public enum Direction_Attack
+{
+    None,
+    Forward,
+    LeftRight,
+    UpDown
+}
+
+
 public abstract class Weapon : MonoBehaviour
 {
     public SpriteRenderer SR;
@@ -26,7 +35,7 @@ public abstract class Weapon : MonoBehaviour
 
         RB = this.AddComponent<Rigidbody2D>();
         RB.bodyType = RigidbodyType2D.Kinematic;
-        
+
         SR = this.AddComponent<SpriteRenderer>();
     }
 
@@ -54,6 +63,8 @@ public abstract class Weapon : MonoBehaviour
             //Debug.Log("Enemey Hitted");
         }
     }
+
+ 
 
 }
 

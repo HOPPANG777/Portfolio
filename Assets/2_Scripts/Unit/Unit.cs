@@ -15,7 +15,7 @@ public abstract class Unit : MonoBehaviour
 
     //public float Xspeed = 2.0f;
     //public float Yspeed = 2.0f;
-    
+
     public float Max_HP = 100;
     public float Current_HP = 100;
 
@@ -58,19 +58,20 @@ public abstract class Unit : MonoBehaviour
 
     public abstract void Unit_Clear();
 
-    //virtual public void Push()
-    //{
-    //    StartCoroutine(C_Push());
-    //}
+    public void Push(Vector3 knockback)
+    {
+        StartCoroutine(C_Push(knockback));
+    }
 
-    //virtual public IEnumerator C_Push()
-    //{
-    //    while (true)
-    //    {
+    public IEnumerator C_Push(Vector3 knockback)
+    {
+        for(int i=0; i < 100; i++)
+        {
+            this.transform.position = this.transform.position + (knockback.normalized * 0.001f * (100 - i) * 0.05f);
 
-    //    }
-    //    yield return null;
-    //}
+            yield return null;
+        }
+    }
 }
 
 /*

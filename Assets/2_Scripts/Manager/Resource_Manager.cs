@@ -24,6 +24,8 @@ public class Resource_Manager : MonoBehaviour
     public STO_Weapon STO_Lightning;
     public STO_Weapon STO_Bullet;
 
+    public STO_Wave[] STO_Waves;
+
     public void Weapon_Stat(Weapon weapon, STO_Weapon W_STO)
     {
         weapon.SR.sprite = W_STO.Sprite_Image;
@@ -38,6 +40,7 @@ public class Resource_Manager : MonoBehaviour
     {
         unit.SR.sprite = Un_STO.Sprite_Image;
         unit.Max_HP = unit.Current_HP = Un_STO.Unit_HP;
+        unit.Unit_HP = Un_STO.Unit_HP;
         unit.Unit_Damage = Un_STO.Unit_Damage;
         unit.Unit_Speed = Un_STO.Unit_Speed;  
     }

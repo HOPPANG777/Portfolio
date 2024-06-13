@@ -45,10 +45,12 @@ public class Player : Unit
         base.Start();
 
         Create_Weapon(Weapon_Type.Bible);
-        // Create_Weapon(Weapon_Type.Force);
-        Create_Weapon(Weapon_Type.SpellBook);
+        Create_Weapon(Weapon_Type.Force);
+        //Create_Weapon(Weapon_Type.SpellBook);
         Create_Weapon(Weapon_Type.Bullet_Launcher);
         Create_Weapon(Weapon_Type.Missile_Launcher);
+
+        BC.size = new Vector2(0.5f, 0.5f);
 
         // Xspeed = 200;
     }
@@ -60,7 +62,7 @@ public class Player : Unit
 
         Vector2 nextVec = InputVec.normalized * (Unit_Speed * Time.deltaTime);
         RB.MovePosition(RB.position + nextVec);
-
+        
         if (InputVec.x != 0)
         {
             SR.flipX = InputVec.x > 0;
@@ -91,10 +93,6 @@ public class Player : Unit
     //무기 만들기
     public IEnumerator C_Create_Weapon(Weapon_Type p_WT)
     {
-
-        float Skill_Cool = 5.0f;
-        float Skill_Full = 0.0f;
-
         GameObject Temp_Go = null;
 
         switch (p_WT)
@@ -150,22 +148,12 @@ public class Player : Unit
                 break;
             case Weapon_Type.Force:
                 {
-                    if (Skill_Full < Skill_Cool)
+                    Temp_Go = Instantiate(Force_Go, null);   
+                    Temp_Go.transform.parent = this.transform;
+                    if (Temp_Go.GetComponent<Force>())
                     {
-
-                        Skill_Full += Time.deltaTime;
-                        All_Manager.instance.UI_M.Update_Player_Skill_Image(Skill_Full / Skill_Cool);
-                        Temp_Go = Instantiate(Force_Go, null);
-                        Temp_Go.transform.parent = this.transform;
-                        if (Temp_Go.GetComponent<Force>())
-                        {
-                            yield return new WaitUntil(() => Temp_Go.GetComponent<Force>().SR);
-                            All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<Force>(), All_Manager.instance.Resource_M.STO_Force);
-                        }
-                    }
-                    else
-                    {
-                        Skill_Full = 0.0f;
+                        yield return new WaitUntil(() => Temp_Go.GetComponent<Force>().SR);
+                        All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<Force>(), All_Manager.instance.Resource_M.STO_Force);
                     }
                 }
                 break;
@@ -215,3 +203,21 @@ public class Player : Unit
 
 //돌기
 // this.transform.Rotate(new Vector3(0, 0, -xSpeed));
+
+//if (Skill_Full < Skill_Cool)
+//{
+
+//    Skill_Full += Time.deltaTime;
+//    All_Manager.instance.UI_M.Update_Player_Skill_Image(Skill_Full / Skill_Cool);
+//    Temp_Go = Instantiate(Force_Go, null);
+//    Temp_Go.transform.parent = this.transform;
+//    if (Temp_Go.GetComponent<Force>())
+//    {
+//        yield return new WaitUntil(() => Temp_Go.GetComponent<Force>().SR);
+//        All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<Force>(), All_Manager.instance.Resource_M.STO_Force);
+//    }
+//}
+//else
+//{
+//    Skill_Full = 0.0f;
+//}

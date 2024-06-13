@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Missile_Launcher : Weapon
@@ -16,8 +17,6 @@ public class Missile_Launcher : Weapon
     {
         
     }
-
-
 
     public void Missile_Detected()
     {
@@ -40,7 +39,6 @@ public class Missile_Launcher : Weapon
                 Temp_Go.GetComponent<Missile>().SR.sprite = All_Manager.instance.Resource_M.STO_Missile.Sprite_Image;
                 All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<Missile>(), All_Manager.instance.Resource_M.STO_Missile);
             }
-
             yield return new WaitForSeconds(AttackRate);
         }
     }
