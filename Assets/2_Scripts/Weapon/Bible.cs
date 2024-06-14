@@ -18,7 +18,7 @@ public class Bible : Weapon
 
     public override void Update()
     {
-        if (Mine == null)
+        if (Mine == null)   // 코루틴 말고 해결책이 있었네? // Mine이 null이면 꺼져.
             return;
 
         Weapon_Time += Time.deltaTime * Weapon_Speed;

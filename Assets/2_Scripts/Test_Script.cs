@@ -8,26 +8,8 @@ public class Test_Script : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(Test());
-    }
+        //Instantiate()
 
-    IEnumerator Test()
-    {
-        Debug.Log("1");
-
-        //yield return new WaitForSeconds(5.0f);
-        //yield return new WaitUntil
-        //yield return new WaitWhile
-        yield return new WaitWhile(() => AA);
-
-        yield return null;
-
-        Debug.Log("2");
-    }
-
-
-    void Update()
-    {
-        
+        GameObject Go = new GameObject("Hi");
     }
 }

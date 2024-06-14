@@ -44,11 +44,11 @@ public class Player : Unit
     {
         base.Start();
 
-        Create_Weapon(Weapon_Type.Bible);
-        Create_Weapon(Weapon_Type.Force);
+        //Create_Weapon(Weapon_Type.Bible);
+        //Create_Weapon(Weapon_Type.Force);
         //Create_Weapon(Weapon_Type.SpellBook);
-        Create_Weapon(Weapon_Type.Bullet_Launcher);
-        Create_Weapon(Weapon_Type.Missile_Launcher);
+        //Create_Weapon(Weapon_Type.Bullet_Launcher);
+        //Create_Weapon(Weapon_Type.Missile_Launcher);
 
         BC.size = new Vector2(0.5f, 0.5f);
 

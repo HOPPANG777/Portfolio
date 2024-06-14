@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 // 추상 : 추상을 적으면 자식만 코드를 사용할수 있고 부모인 자신은 사용하지 못함
 public abstract class Unit : MonoBehaviour
@@ -12,6 +13,7 @@ public abstract class Unit : MonoBehaviour
     public BoxCollider2D BC;
     public Rigidbody2D RB;
     protected bool isDead = false;
+    protected bool isHit = false;
 
     //public float Xspeed = 2.0f;
     //public float Yspeed = 2.0f;
@@ -22,6 +24,8 @@ public abstract class Unit : MonoBehaviour
     public float Unit_Damage = 0.0f;
     public float Unit_Speed = 0.0f;
     public float Unit_HP = 0.0f;
+
+    public float Hit_Effect_Time = 0;
 
     virtual public void Start()
     {
@@ -36,7 +40,7 @@ public abstract class Unit : MonoBehaviour
 
     virtual public void Update()
     {
-
+        Hit_Effect_Time += Time.deltaTime;
     }
 
     virtual public void Hitted(float p_Damage_Value)
@@ -47,6 +51,7 @@ public abstract class Unit : MonoBehaviour
             Current_HP = 0;
             Die();
         }
+        Hit_Effect();
     }
 
     virtual public void Die()
@@ -72,6 +77,31 @@ public abstract class Unit : MonoBehaviour
             yield return null;
         }
     }
+
+    public void Hit_Effect()
+    {
+        StartCoroutine(C_Hit_Effect());
+    }
+    
+    public IEnumerator C_Hit_Effect()
+    {
+        isHit = true;
+        if (isHit == true)
+        {
+            SR.color = new Color(1, 0, 0);
+        }
+       
+        yield return new WaitForSeconds(Hit_Effect_Time);
+
+        isHit = false;
+        if(isHit == false)
+        {
+            SR.color = new Color(1, 1, 1);
+        }
+
+    }
+
+
 }
 
 /*

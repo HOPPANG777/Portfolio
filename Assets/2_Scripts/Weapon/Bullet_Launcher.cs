@@ -45,11 +45,12 @@ public class Bullet_Launcher : Weapon
                     All_Manager.instance.Resource_M.Weapon_Stat(clone.GetComponent<Bullet>(), All_Manager.instance.Resource_M.STO_Bullet);
                     Debug.Log("1");
                 }
-                Vector2 dirVec = new Vector2(Mathf.Cos((Mathf.PI) * 2 * i / (Weapon_Level - 1)), Mathf.Sin((Mathf.PI) * i * 2 / (Weapon_Level - 1)));
+                Vector3 dirVec = new Vector3(Mathf.Cos((Mathf.PI) * 2 * i / (Weapon_Level - 1)), Mathf.Sin((Mathf.PI) * i * 2 / (Weapon_Level - 1)));
                 //원을 기준으로 각각의 투사체마다 벡터를 정리
-                clone.GetComponent<Rigidbody2D>().AddForce(dirVec * Weapon_Speed * Time.deltaTime);
+                //clone.GetComponent<Rigidbody2D>().AddForce(dirVec * Weapon_Speed * Time.deltaTime);
+                clone.transform.position = clone.transform.position + (dirVec.normalized * Weapon_Speed * Time.deltaTime);
             }
-
+            
             yield return new WaitForSeconds(Attack_Rate);
         }
 

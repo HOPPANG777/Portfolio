@@ -5,15 +5,14 @@ using UnityEngine;
 //ÇÁ¸®ÆÕ Ã¢°í
 public class Resource_Manager : MonoBehaviour
 {
-    public GameObject Player_Prefab_Go;
-    public GameObject Enemy_Prefab_Go;
-
     public STO_Unit STO_Player;
+    
     public STO_Unit STO_Enemy1;
     public STO_Unit STO_Enemy2;
     public STO_Unit STO_Enemy3;
     public STO_Unit STO_Enemy4;
     public STO_Unit STO_Enemy5;
+
     public STO_Weapon STO_Bible;
     public STO_Weapon STO_Force;
     public STO_Weapon STO_SpellBook;

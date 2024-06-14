@@ -40,6 +40,8 @@ public class GameMode_Manager : MonoBehaviour
     {
         if (GM_State == GameMode_State.Ingame)
         {
+            Time.timeScale = 1f;
+
             if (Current_Player == null) return; 
 
             Game_Time += Time.deltaTime;
@@ -155,7 +157,7 @@ public class GameMode_Manager : MonoBehaviour
                 yield return new WaitForSeconds(1f);
             }
         }
-
+       
         else
         {
 

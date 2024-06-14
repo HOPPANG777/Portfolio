@@ -13,7 +13,7 @@ public enum Unit_Name
 public class Unit_Manager : MonoBehaviour
 {
     public GameObject Player_Go;
-    public GameObject Enemy_Go;
+    // public GameObject Enemy_Go;
 
     public void Create_Unit(Unit_Name p_Unit_Name)
     {
@@ -68,13 +68,47 @@ public class Unit_Manager : MonoBehaviour
             {
                 yield return new WaitUntil(() => Temp_Go.GetComponent<Enemy>().SR);
                 All_Manager.instance.Resource_M.Unit_Stat(Temp_Go.GetComponent<Enemy>(), All_Manager.instance.Resource_M.STO_Enemy1);
-
+                
                 All_Manager.instance.GameMode_M.Enemy_List.Add(Temp_Go.GetComponent<Enemy>());
-                All_Manager.instance.GameMode_M.Current_Enemy = Temp_Go.GetComponent<Enemy>();
             }
         }
     }
     
+    public void Enemy_Create()
+    {
+
+    }
+
+    public IEnumerator C_Enemy_Create(STO_Unit E_Unit, Vector3 Player_Pos)
+    {
+        GameObject Enemy_Go = new GameObject("Enemy");
+
+        Enemy_Go.AddComponent<Enemy>();
+
+        //50 - 100 구하고
+        //홀이면 플 짝이면 마
+        int Temp_X = Random.Range(5, 10);
+        Temp_X = ((Temp_X % 2) == 1) ? -Temp_X : Temp_X;
+
+        int Temp_Y = Random.Range(5, 10);
+        Temp_Y = ((Temp_Y % 2) == 1) ? -Temp_Y : Temp_Y;
+
+        Player_Pos += new Vector3(Temp_X, Temp_Y, 0);
+
+        Enemy_Go.transform.position = Player_Pos;
+        Enemy_Go.transform.rotation = Quaternion.identity;
+        Enemy_Go.transform.localScale = Vector3.one;
+        
+        if (Enemy_Go.GetComponent<Enemy>())
+        {
+            yield return new WaitUntil(() => Enemy_Go.GetComponent<Enemy>().SR);
+            All_Manager.instance.Resource_M.Unit_Stat(Enemy_Go.GetComponent<Enemy>(), E_Unit);
+            
+            All_Manager.instance.GameMode_M.Enemy_List.Add(Enemy_Go.GetComponent<Enemy>());
+        }
+
+    }
+
 }
     //public void Start()
     //{
