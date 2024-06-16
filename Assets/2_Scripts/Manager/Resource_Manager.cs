@@ -25,6 +25,8 @@ public class Resource_Manager : MonoBehaviour
 
     public STO_Wave[] STO_Waves;
 
+    public STO_MISC STO_Gem;
+
     public void Weapon_Stat(Weapon weapon, STO_Weapon W_STO)
     {
         weapon.SR.sprite = W_STO.Sprite_Image;

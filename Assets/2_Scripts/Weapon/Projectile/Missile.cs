@@ -64,9 +64,8 @@ public class Missile : Weapon
         }
         else Debug.Log("NULL");
         
-        this.transform.position = this.transform.position + this.transform.right * (Weapon_Speed * Time.deltaTime);
-
         // 그 방향을 향해서 앞으로
+        this.transform.position = this.transform.position + this.transform.right * (Weapon_Speed * Time.deltaTime);
 
         TO_Del -= Time.deltaTime;
         if (TO_Del < 0)

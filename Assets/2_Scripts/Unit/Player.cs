@@ -44,7 +44,7 @@ public class Player : Unit
     {
         base.Start();
 
-        //Create_Weapon(Weapon_Type.Bible);
+        Create_Weapon(Weapon_Type.Bible);
         //Create_Weapon(Weapon_Type.Force);
         //Create_Weapon(Weapon_Type.SpellBook);
         //Create_Weapon(Weapon_Type.Bullet_Launcher);
@@ -93,7 +93,7 @@ public class Player : Unit
     //무기 만들기
     public IEnumerator C_Create_Weapon(Weapon_Type p_WT)
     {
-        GameObject Temp_Go = null;
+        //GameObject Temp_Go = null;
 
         switch (p_WT)
         {
@@ -103,57 +103,86 @@ public class Player : Unit
                 break;
             case Weapon_Type.Bible:
                 {
-                    Temp_Go = Instantiate(Bible_Go, null);
-                    Temp_Go.transform.parent = this.transform;
-                    if (Temp_Go.GetComponent<Bible>())
+                    //Temp_Go = Instantiate(Bible_Go, null);
+                    GameObject Bible_Go = new GameObject("Bible");
+                    Bible_Go.AddComponent<Bible>();
+                    Bible_Go.transform.parent = this.transform;
+                    if (Bible_Go.GetComponent<Bible>())
                     {
-                        yield return new WaitUntil(() => Temp_Go.GetComponent<Bible>().SR);
-                        All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<Bible>(), All_Manager.instance.Resource_M.STO_Bible);
+                        yield return new WaitUntil(() => Bible_Go.GetComponent<Bible>().SR);
+                        All_Manager.instance.Resource_M.Weapon_Stat(Bible_Go.GetComponent<Bible>(), All_Manager.instance.Resource_M.STO_Bible);
+                    }
+                    if (Bible_Go.GetComponent<Weapon>())
+                    {
+                        Bible_Go.GetComponent<Weapon>().Weapon_Init(this);
                     }
                 }
                 break;
             case Weapon_Type.SpellBook:
                 {
-                    Temp_Go = Instantiate(SpellBook_Go, null);
-                    Temp_Go.transform.parent = this.transform;
-                    if (Temp_Go.GetComponent<SpellBook>())
+                    //Temp_Go = Instantiate(SpellBook_Go, null);
+                    GameObject SpellBook_Go = new GameObject("SpellBook");
+                    SpellBook_Go.AddComponent<SpellBook>();
+                    SpellBook_Go.transform.parent = this.transform;
+                    if (SpellBook_Go.GetComponent<SpellBook>())
                     {
-                        yield return new WaitUntil(() => Temp_Go.GetComponent<SpellBook>().SR);
-                        All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<SpellBook>(), All_Manager.instance.Resource_M.STO_SpellBook);
+                        yield return new WaitUntil(() => SpellBook_Go.GetComponent<SpellBook>().SR);
+                        All_Manager.instance.Resource_M.Weapon_Stat(SpellBook_Go.GetComponent<SpellBook>(), All_Manager.instance.Resource_M.STO_SpellBook);
+                    }
+                    if (SpellBook_Go.GetComponent<Weapon>())
+                    {
+                        SpellBook_Go.GetComponent<Weapon>().Weapon_Init(this);
                     }
                 }
                 break;
             case Weapon_Type.Bullet_Launcher:
                 {
-                    Temp_Go = Instantiate(Bullet_Launcher_Go, null);
-                    Temp_Go.transform.parent = this.transform;
-                    if (Temp_Go.GetComponent<Bullet_Launcher>())
+                    //Temp_Go = Instantiate(Bullet_Launcher_Go, null);
+                    GameObject Bullet_Launcher_Go = new GameObject("Bullet_Launcher");
+                    Bullet_Launcher_Go.AddComponent<Bullet_Launcher>();
+                    Bullet_Launcher_Go.transform.parent = this.transform;
+                    if (Bullet_Launcher_Go.GetComponent<Bullet_Launcher>())
                     {
-                        yield return new WaitUntil(() => Temp_Go.GetComponent<Bullet_Launcher>().SR);
-                        All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<Bullet_Launcher>(), All_Manager.instance.Resource_M.STO_Bullet_Launcher);
+                        yield return new WaitUntil(() => Bullet_Launcher_Go.GetComponent<Bullet_Launcher>().SR);
+                        All_Manager.instance.Resource_M.Weapon_Stat(Bullet_Launcher_Go.GetComponent<Bullet_Launcher>(), All_Manager.instance.Resource_M.STO_Bullet_Launcher);
+                    }
+                    if (Bullet_Launcher_Go.GetComponent<Weapon>())
+                    {
+                        Bullet_Launcher_Go.GetComponent<Weapon>().Weapon_Init(this);
                     }
                 }
                 break;
             case Weapon_Type.Missile_Launcher:
                 {
-                    Temp_Go = Instantiate(Missile_Launcher_Go, null);
-                    Temp_Go.transform.parent = this.transform;
-                    if (Temp_Go.GetComponent<Missile_Launcher>())
+                    //Temp_Go = Instantiate(Missile_Launcher_Go, null);
+                    GameObject Missile_Launcher_Go = new GameObject("Missile_Launcher");
+                    Missile_Launcher_Go.AddComponent<Missile_Launcher>();
+                    Missile_Launcher_Go.transform.parent = this.transform;
+                    if (Missile_Launcher_Go.GetComponent<Missile_Launcher>())
                     {
-                        yield return new WaitUntil(() => Temp_Go.GetComponent<Missile_Launcher>().SR);
-                        All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<Missile_Launcher>(), All_Manager.instance.Resource_M.STO_Missile_Launcher);
+                        yield return new WaitUntil(() => Missile_Launcher_Go.GetComponent<Missile_Launcher>().SR);
+                        All_Manager.instance.Resource_M.Weapon_Stat(Missile_Launcher_Go.GetComponent<Missile_Launcher>(), All_Manager.instance.Resource_M.STO_Missile_Launcher);
                     }
-
+                    if (Missile_Launcher_Go.GetComponent<Weapon>())
+                    {
+                        Missile_Launcher_Go.GetComponent<Weapon>().Weapon_Init(this);
+                    }
                 }
                 break;
             case Weapon_Type.Force:
                 {
-                    Temp_Go = Instantiate(Force_Go, null);   
-                    Temp_Go.transform.parent = this.transform;
-                    if (Temp_Go.GetComponent<Force>())
+                    //Temp_Go = Instantiate(Force_Go, null);
+                    GameObject Force_Go = new GameObject("Force");
+                    Force_Go.AddComponent<Force>();
+                    Force_Go.transform.parent = this.transform;
+                    if (Force_Go.GetComponent<Force>())
                     {
-                        yield return new WaitUntil(() => Temp_Go.GetComponent<Force>().SR);
-                        All_Manager.instance.Resource_M.Weapon_Stat(Temp_Go.GetComponent<Force>(), All_Manager.instance.Resource_M.STO_Force);
+                        yield return new WaitUntil(() => Force_Go.GetComponent<Force>().SR);
+                        All_Manager.instance.Resource_M.Weapon_Stat(Force_Go.GetComponent<Force>(), All_Manager.instance.Resource_M.STO_Force);
+                    }
+                    if (Force_Go.GetComponent<Weapon>())
+                    {
+                        Force_Go.GetComponent<Weapon>().Weapon_Init(this);
                     }
                 }
                 break;
@@ -161,10 +190,10 @@ public class Player : Unit
                 break;
         }
 
-        if (Temp_Go.GetComponent<Weapon>())
-        {
-            Temp_Go.GetComponent<Weapon>().Weapon_Init(this);
-        }
+        //if (Temp_Go.GetComponent<Weapon>())
+        //{
+        //    Temp_Go.GetComponent<Weapon>().Weapon_Init(this);
+        //}
     }
 
 

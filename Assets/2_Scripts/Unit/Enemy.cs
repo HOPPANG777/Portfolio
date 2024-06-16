@@ -44,6 +44,8 @@ public class Enemy : Unit
 
         All_Manager.instance.GameMode_M.Enemy_Down();
 
+        Enemy_Gem();
+
         Destroy(this.gameObject);
     }
 
@@ -64,6 +66,20 @@ public class Enemy : Unit
 
                 Attack_Time = 0.0f;
             }
+        }
+    }
+
+    public void Enemy_Gem()
+    {
+        GameObject Gem_Go = new GameObject("Gem");
+
+        Gem_Go.AddComponent<Gem>();
+        // Gem_Go.transform.parent = this.transform;
+        if (Gem_Go.GetComponent<Gem>())
+        {
+            if (Gem_Go.GetComponent<Gem>().SR == null)
+                return;
+            Gem_Go.GetComponent<Gem>().SR.sprite = All_Manager.instance.Resource_M.STO_Gem.Sprite_Image;
         }
     }
 

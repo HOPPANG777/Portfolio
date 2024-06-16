@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,8 @@ public class UI_Manager : MonoBehaviour
     public Image Player_HPbar_Image;
     public Text Game_Over_Text;
     public Image Player_Skill_Image;
+    public Text Time_Count_Text;
+    public Text Gem_Count_Text;
 
     public void Update_Kill_Count_Text(int p_Count)
     {
@@ -38,5 +41,15 @@ public class UI_Manager : MonoBehaviour
     public void Update_Game_Over_Text_Off()
     {
         Game_Over_Text.gameObject.SetActive(false);
+    }
+
+    public void Update_Time_Count_Text(float p_Time_Count)
+    {
+        Time_Count_Text.text = Mathf.Ceil(p_Time_Count).ToString();
+    }
+
+    public void Update_Gem_Count_Text(int p_Gem_Count)
+    {
+        Gem_Count_Text.text = "Gem : " + p_Gem_Count;
     }
 }

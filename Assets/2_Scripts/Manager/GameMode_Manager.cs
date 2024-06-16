@@ -45,7 +45,7 @@ public class GameMode_Manager : MonoBehaviour
             if (Current_Player == null) return; 
 
             Game_Time += Time.deltaTime;
-            Debug.Log("Game Time : " + Game_Time);
+            All_Manager.instance.UI_M.Update_Time_Count_Text(Game_Time);
 
             var Re = All_Manager.instance.Resource_M;
 
@@ -88,7 +88,7 @@ public class GameMode_Manager : MonoBehaviour
     //게임 시작 함수
     public void Game_Start()
     {
-        All_Manager.instance.Unit_M.Create_Unit(Unit_Name.Player);
+        All_Manager.instance.Unit_M.Create_Player(All_Manager.instance.Resource_M.STO_Player);
 
         GM_State = GameMode_State.Ingame;
     }
@@ -102,8 +102,8 @@ public class GameMode_Manager : MonoBehaviour
         All_Manager.instance.UI_M.Update_Game_Over_Text_Off();
         Current_Enemy.Unit_Clear();
         Current_Player.Unit_Clear();
-        All_Manager.instance.Unit_M.Create_Unit(Unit_Name.Player);
-        All_Manager.instance.GameMode_M.GM_State = GameMode_State.Ingame;
+        All_Manager.instance.Unit_M.Create_Player(All_Manager.instance.Resource_M.STO_Player);
+        //All_Manager.instance.GameMode_M.GM_State = GameMode_State.Ingame;
     }
 
     public void Game_Exit()
@@ -140,7 +140,8 @@ public class GameMode_Manager : MonoBehaviour
                     {
                         // STO 랑 Position 를 매개변수로 받을수 있게
                         //All_Manager.instance.Unit_M.Create_Unit(STO , Position);
-                        All_Manager.instance.Unit_M.Create_Unit(Unit_Name.Enemy);
+                        // All_Manager.instance.Unit_M.Create_Unit(Unit_Name.Enemy);
+                        All_Manager.instance.Unit_M.Create_Enemy(All_Manager.instance.Resource_M.STO_Enemy1, All_Manager.instance.GameMode_M.Current_Player.transform.position);
                     }
                 }
 
@@ -169,7 +170,7 @@ public class GameMode_Manager : MonoBehaviour
                     {
                         // STO 랑 Position 를 매개변수로 받을수 있게
                         //All_Manager.instance.Unit_M.Create_Unit(STO , Position);
-                        All_Manager.instance.Unit_M.Create_Unit(Unit_Name.Enemy);
+                        All_Manager.instance.Unit_M.Create_Enemy(All_Manager.instance.Resource_M.STO_Enemy1, All_Manager.instance.GameMode_M.Current_Player.transform.position);
                     }
                 }
 
