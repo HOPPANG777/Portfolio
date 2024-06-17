@@ -147,10 +147,19 @@ public class GameMode_Manager : MonoBehaviour
                 {
                     for (int i = 0; i < p_STO_Wave.Spawn_Count; i++)
                     {
+                        int Temp_X = Random.Range(5, 10);
+                        Temp_X = ((Temp_X % 2) == 1) ? -Temp_X : Temp_X;
+
+                        int Temp_Y = Random.Range(5, 10);
+                        Temp_Y = ((Temp_Y % 2) == 1) ? -Temp_Y : Temp_Y;
+
+                        Vector3 Player_Pos = Current_Player.transform.position;
+                        Player_Pos += new Vector3(Temp_X, Temp_Y, 0);
+
                         // STO 랑 Position 를 매개변수로 받을수 있게
                         //All_Manager.instance.Unit_M.Create_Unit(STO , Position);
                         // All_Manager.instance.Unit_M.Create_Unit(Unit_Name.Enemy);
-                        All_Manager.instance.Unit_M.Create_Enemy(All_Manager.instance.Resource_M.STO_Enemy1, All_Manager.instance.GameMode_M.Current_Player.transform.position);
+                        All_Manager.instance.Unit_M.Create_Enemy(p_STO_Wave.STO_Enemy, Player_Pos);
                     }
                 }
 
@@ -177,9 +186,18 @@ public class GameMode_Manager : MonoBehaviour
                 {
                     for (int qwe = 0; qwe < p_STO_Wave.Spawn_Count; qwe++)
                     {
+                        int Temp_X = Random.Range(5, 10);
+                        Temp_X = ((Temp_X % 2) == 1) ? -Temp_X : Temp_X;
+
+                        int Temp_Y = Random.Range(5, 10);
+                        Temp_Y = ((Temp_Y % 2) == 1) ? -Temp_Y : Temp_Y;
+
+                        Vector3 Player_Pos = Current_Player.transform.position;
+                        Player_Pos += new Vector3(Temp_X, Temp_Y, 0);
+
                         // STO 랑 Position 를 매개변수로 받을수 있게
                         //All_Manager.instance.Unit_M.Create_Unit(STO , Position);
-                        All_Manager.instance.Unit_M.Create_Enemy(All_Manager.instance.Resource_M.STO_Enemy1, All_Manager.instance.GameMode_M.Current_Player.transform.position);
+                        All_Manager.instance.Unit_M.Create_Enemy(p_STO_Wave.STO_Enemy, Player_Pos);
                     }
                 }
 

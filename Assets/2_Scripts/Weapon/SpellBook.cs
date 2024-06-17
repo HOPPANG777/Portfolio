@@ -18,8 +18,8 @@ public class SpellBook : Weapon
     public override void Start()
     {
         base.Start();
-        // Magic();
-        Spell();
+        Magic();
+        //Spell();
     }
 
     public override void Update()

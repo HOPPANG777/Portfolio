@@ -56,13 +56,13 @@ public class Unit_Manager : MonoBehaviour
 
         //50 - 100 구하고
         //홀이면 플 짝이면 마
-        int Temp_X = Random.Range(5, 10);
-        Temp_X = ((Temp_X % 2) == 1) ? -Temp_X : Temp_X;
+        //int Temp_X = Random.Range(5, 10);
+        //Temp_X = ((Temp_X % 2) == 1) ? -Temp_X : Temp_X;
 
-        int Temp_Y = Random.Range(5, 10);
-        Temp_Y = ((Temp_Y % 2) == 1) ? -Temp_Y : Temp_Y;
+        //int Temp_Y = Random.Range(5, 10);
+        //Temp_Y = ((Temp_Y % 2) == 1) ? -Temp_Y : Temp_Y;
 
-        Player_Pos += new Vector3(Temp_X, Temp_Y, 0);
+        //Player_Pos += new Vector3(Temp_X, Temp_Y, 0);
 
         Enemy_Go.transform.position = Player_Pos;
         Enemy_Go.transform.rotation = Quaternion.identity;

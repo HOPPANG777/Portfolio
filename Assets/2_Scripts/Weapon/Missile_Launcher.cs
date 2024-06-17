@@ -31,7 +31,15 @@ public class Missile_Launcher : Weapon
 
         while (true)
         {
-            GameObject Temp_Go = Instantiate(Missile_Go, Mine.transform.position, Quaternion.identity, null);
+            //GameObject Temp_Go = Instantiate(Missile_Go, Mine.transform.position, Quaternion.identity, null);
+            GameObject Temp_Go = new GameObject("Missile");
+
+            Temp_Go.AddComponent<Missile>();
+
+            Temp_Go.transform.position = Mine.transform.position;
+            Temp_Go.transform.rotation = Quaternion.identity;
+            Temp_Go.transform.localScale = Vector3.one;
+
             // Temp_Go.transform.parent = this.transform;
             if (Temp_Go.GetComponent<Missile>())
             {

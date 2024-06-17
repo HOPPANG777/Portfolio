@@ -27,6 +27,8 @@ public abstract class Unit : MonoBehaviour
 
     public float Hit_Effect_Time = 0;
 
+    public float SR_GB = 0f;
+
     virtual public void Start()
     {
         BC = this.AddComponent<BoxCollider2D>();
@@ -40,18 +42,21 @@ public abstract class Unit : MonoBehaviour
 
     virtual public void Update()
     {
-        Hit_Effect_Time += Time.deltaTime;
+        // Hit_Effect_Time += Time.deltaTime;
+        SR_GB -= Time.deltaTime;
+        SR.color = new Color(1, 1 - SR_GB, 1 - SR_GB);
     }
 
     virtual public void Hitted(float p_Damage_Value)
     {
         Current_HP -= p_Damage_Value;
+        SR_GB = 1f;
+        //Hit_Effect();
         if (Current_HP < 0)
         {
             Current_HP = 0;
             Die();
         }
-        Hit_Effect();
     }
 
     virtual public void Die()
@@ -85,6 +90,12 @@ public abstract class Unit : MonoBehaviour
     
     public IEnumerator C_Hit_Effect()
     {
+        if (this == null)
+            yield break;
+
+        if (SR == null)
+            yield break;
+
         isHit = true;
         if (isHit == true)
         {
@@ -92,6 +103,12 @@ public abstract class Unit : MonoBehaviour
         }
        
         yield return new WaitForSeconds(Hit_Effect_Time);
+
+        if (this == null)
+            yield break;
+
+        if (SR == null)
+            yield break;
 
         isHit = false;
         if(isHit == false)

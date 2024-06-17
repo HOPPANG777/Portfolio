@@ -9,7 +9,6 @@ using UnityEngine.UIElements;
 //https://unity-programmer.tistory.com/3
 public class Bible : Weapon
 {
-
     public override void Start()
     {
         base.Start();

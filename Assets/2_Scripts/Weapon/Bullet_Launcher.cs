@@ -26,9 +26,9 @@ public class Bullet_Launcher : Weapon
 
     public IEnumerator C_CircleBullet()
     {
-        // yield return new WaitUntil(() => Mine);
+        //yield return new WaitUntil(() => Mine);
 
-        // float Interval_Angle = 360 / Weapon_Level;
+        //float Interval_Angle = 360 / Weapon_Level;
         float Attack_Rate = 2.0f;
 
         while (true)
@@ -37,7 +37,18 @@ public class Bullet_Launcher : Weapon
             for (int i = 0; i < Weapon_Level; i++)
             {
                 //투사체의 각도가 자연스럽게 회전값을 넣었다.
-                GameObject clone = Instantiate(Bullet_Go, this.transform.position + new Vector3(0, 0.3f), Quaternion.Euler(0, 0, (360 * i / (Weapon_Level - 1)) + 180));
+                //GameObject clone = Instantiate(Bullet_Go, this.transform.position + new Vector3(0, 0.3f), Quaternion.Euler(0, 0, (360 * i / (Weapon_Level - 1)) + 180));
+
+                GameObject clone = new GameObject("Bullet");
+
+                clone.AddComponent<Bullet>();
+
+                clone.transform.position = this.transform.position + new Vector3(0, 0.3f);
+                Vector3 dirVec = new Vector3(Mathf.Cos((Mathf.PI) * 2 * i / (Weapon_Level - 1)), Mathf.Sin((Mathf.PI) * i * 2 / (Weapon_Level - 1)));
+                clone.transform.position = clone.transform.position + (dirVec.normalized * Weapon_Speed * Time.deltaTime);
+
+                clone.transform.rotation = Quaternion.Euler(0, 0, (360 * i / (Weapon_Level - 1)) + 180);
+                clone.transform.localScale = Vector3.one;
 
                 if (clone.GetComponent<Bullet>())
                 {
@@ -45,10 +56,8 @@ public class Bullet_Launcher : Weapon
                     All_Manager.instance.Resource_M.Weapon_Stat(clone.GetComponent<Bullet>(), All_Manager.instance.Resource_M.STO_Bullet);
                     Debug.Log("1");
                 }
-                Vector3 dirVec = new Vector3(Mathf.Cos((Mathf.PI) * 2 * i / (Weapon_Level - 1)), Mathf.Sin((Mathf.PI) * i * 2 / (Weapon_Level - 1)));
                 //원을 기준으로 각각의 투사체마다 벡터를 정리
                 //clone.GetComponent<Rigidbody2D>().AddForce(dirVec * Weapon_Speed * Time.deltaTime);
-                clone.transform.position = clone.transform.position + (dirVec.normalized * Weapon_Speed * Time.deltaTime);
             }
             
             yield return new WaitForSeconds(Attack_Rate);

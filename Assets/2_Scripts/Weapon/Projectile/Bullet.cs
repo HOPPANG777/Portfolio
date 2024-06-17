@@ -15,7 +15,7 @@ public class Bullet : Weapon
 
     public override void Update()
     {
-        this.transform.position = this.transform.position + (this.transform.up * Weapon_Speed * Time.deltaTime);
+        this.transform.position = this.transform.position + (-this.transform.right * Weapon_Speed * Time.deltaTime);
 
         Vector3 viewPos = mainCamera.WorldToViewportPoint(transform.position);
 
