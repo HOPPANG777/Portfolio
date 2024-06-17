@@ -24,6 +24,8 @@ public class GameMode_Manager : MonoBehaviour
 
     public int Kill_Count = 0;
 
+    public int Gem_Count = 0;
+
     //게임시간
     public float Game_Time = 0;
 
@@ -120,6 +122,13 @@ public class GameMode_Manager : MonoBehaviour
         Kill_Count++;
 
         All_Manager.instance.UI_M.Update_Kill_Count_Text(Kill_Count);
+    }
+
+    public void Get_Gem()
+    {
+        Gem_Count++;
+
+        All_Manager.instance.UI_M.Update_Gem_Count_Text(Gem_Count);
     }
 
     public void Start_Wave(STO_Wave p_STO_Wave)

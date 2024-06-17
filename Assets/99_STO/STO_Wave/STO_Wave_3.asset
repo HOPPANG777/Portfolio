@@ -17,4 +17,4 @@ MonoBehaviour:
   Kill_Count: 10
   Spawn_Time: 5
   Spawn_Count: 7
-  STO_Enemy: {fileID: 11400000, guid: 6d4a86aa30d291748872b2dc18c8563a, type: 2}
+  STO_Enemy: {fileID: 11400000, guid: 42ce350375a1f8d42a02bd28c793e1d2, type: 2}

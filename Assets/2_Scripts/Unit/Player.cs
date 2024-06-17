@@ -75,7 +75,6 @@ public class Player : Unit
         All_Manager.instance.UI_M.Update_Player_HPBar_Image(Current_HP / Max_HP);
     }
 
-
     public override void Die()
     {
         base.Die();

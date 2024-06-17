@@ -41,3 +41,4 @@ public class STO_Wave : ScriptableObject
     //³ª¿Ã ¾Ö
     public STO_Unit STO_Enemy;
 }
+    
