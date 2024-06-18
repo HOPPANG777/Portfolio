@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98454607a08893a458162529e1c6f440, type: 3}
-  m_Name: Lightning STO_Weapon
+  m_Script: {fileID: 11500000, guid: 7857a07e83bf01a49bdbe4ca3b1f1882, type: 3}
+  m_Name: Player_STO_Unit
   m_EditorClassIdentifier: 
-  Weapon_Damage: 140
-  Weapon_Speed: 1
-  Weapon_Range: 1
-  Weapon_Time: 1
-  Weapon_Level: 1
-  Sprite_Image: {fileID: 21300000, guid: 5af1f248e13784ae6bef204f6e013e5d, type: 3}
+  Unit_HP: 300
+  Unit_Speed: 2
+  Unit_Damage: 0
+  Sprite_Image: {fileID: 21300000, guid: 642035d1ad6054d4c81d469682e27df3, type: 3}

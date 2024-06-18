@@ -54,15 +54,19 @@ public class Missile : Weapon
 
         if (M_target != null)
         {
-            Debug.Log("Not Null");
-
             //방향 바꾸고
             Vector2 Dir = M_target.position - this.transform.position;
             float angle = Mathf.Atan2(Dir.y, Dir.x) * Mathf.Rad2Deg;
             this.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
         }
-        else Debug.Log("NULL");
+
+        else
+        {
+            Debug.Log("Null");
+
+            this.transform.rotation = Quaternion.AngleAxis(Random.Range(0, 360), new Vector3(Random.Range(0, 360), Random.Range(0, 360), 0));
+        }
         
         // 그 방향을 향해서 앞으로
         this.transform.position = this.transform.position + this.transform.right * (Weapon_Speed * Time.deltaTime);

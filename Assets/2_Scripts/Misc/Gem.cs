@@ -14,6 +14,8 @@ public class Gem : MonoBehaviour
 
     public Vector3 BoxSize = new Vector3(0.1f, 0.1f);
 
+    public int Gem_Level = 1;
+
     public void Start()
     {
         BC = this.AddComponent<BoxCollider2D>();

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7857a07e83bf01a49bdbe4ca3b1f1882, type: 3}
-  m_Name: Enemy4 STO_Unit
+  m_Name: Enemy4_STO_Unit
   m_EditorClassIdentifier: 
   Unit_HP: 250
   Unit_Speed: 2
